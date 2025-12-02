@@ -7,20 +7,19 @@
 
 typedef struct
 {
-  uint8_t byOutputButton;
-  uint8_t byOutputSwitch;
+  uint8_t byLedsButton;
+  uint8_t byLedsSwitch;
 } s_in;
 
 typedef struct
 {
-  uint8_t byInputButton;
-  uint8_t byInputSwitch;
+  uint8_t byInputsButton;
+  uint8_t byInputsSwitch;
 } s_out;
 
 class CAN_OPEN: public CAN_OPEN_BASE
 {
 public:
-  u_int16_t dummy;
   CAN_OPEN(void);
   void setup(uint8_t addr_co_eeprom);
   void rx_pdo_1(twai_message_t *msg_rx) override;

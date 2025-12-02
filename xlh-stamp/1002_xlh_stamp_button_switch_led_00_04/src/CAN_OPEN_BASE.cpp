@@ -68,6 +68,9 @@ void CAN_OPEN_BASE::nmt(twai_message_t *msg_rx)
       case 0x01:
         this->node_guard_state = NODE_GUARD_STATE_OPERATIONAL;
         this->pdo_tx_1_send_msg = 1;
+        this->pdo_tx_2_send_msg = 1;
+        this->pdo_tx_3_send_msg = 1;
+        this->pdo_tx_4_send_msg = 1;
         break;
       case 0x02:
         this->node_guard_state = NODE_GUARD_STATE_STOPPED;
@@ -349,7 +352,17 @@ void CAN_OPEN_BASE::tx_pdo_1(void)
   }
 }
 
-void CAN_OPEN_BASE::tx_pdo_2(void) { ; }
+void CAN_OPEN_BASE::tx_pdo_2(void)
+{
+  // this->pdo_tx_2_send_msg = 0;
+  if ((this->obj_dict_base.pdo_tx_2_event_time > 0) &&
+      (this->pdo_tx_2_ms_counter >= this->obj_dict_base.pdo_tx_2_event_time))
+  {
+    this->pdo_tx_2_send_msg = 1;
+    this->pdo_tx_2_ms_counter = 0;
+  }
+}
+
 void CAN_OPEN_BASE::tx_pdo_3(void) { ; }
 void CAN_OPEN_BASE::tx_pdo_4(void) { ; }
 

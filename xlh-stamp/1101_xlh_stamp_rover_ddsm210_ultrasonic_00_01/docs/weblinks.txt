@@ -1,0 +1,29 @@
+https://docs.m5stack.com/en/core/AtomS3%20Lite
+https://docs.m5stack.com/en/core/AtomS3
+https://docs.m5stack.com/en/arduino/m5atoms3/button
+
+DDSM210
+https://www.waveshare.com/wiki/DDSM_Driver_HAT_(A)
+https://www.waveshare.com/ddsm-driver-hat-a.htm
+https://files.waveshare.com/wiki/DDSM-Driver-HAT-(A)/DDSM_Driver_HAT_(A)_Sch.pdf
+https://github.com/waveshareteam/ddsm_example/tree/main/ddsm_ctrl
+
+
+https://www.waveshare.com/ddsm210.htm
+https://www.waveshare.com/wiki/DDSM210
+
+size 8MB 0x800000
+
+EEPROM
+https://github.com/m5stack/M5Stack/tree/master/examples/Advanced
+https://github.com/m5stack/M5Stack/blob/master/examples/Advanced/Storage/EEPROM/EEPROM.ino
+
+Unit Ultrasonic-I2C
+https://docs.m5stack.com/en/unit/ULTRASONIC%20I2C
+https://github.com/m5stack/M5Unit-Sonic/blob/master/examples/Unit_SonicI2C_M5Atom/Unit_SonicI2C_M5Atom.ino
+https://github.com/m5stack/M5Unit-Sonic/tree/master
+
+Unit PaHub v2.1
+https://docs.m5stack.com/en/unit/Unit-PaHub%20v2.1
+https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer/arduino
+https://www.ti.com/lit/ds/symlink/pca9548a.pdf?ts=1766803069630&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FPCA9548A

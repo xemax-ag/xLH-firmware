@@ -3,7 +3,7 @@
 #include "CONFIG.h"
 #include "CAN_OPEN.h"
 #include "DDSM210.h"
-#include "ULTRASONIC.h"
+#include "IMU.h"
 #include "TOOLBOX.h"
 #include <EEPROM.h>
 #include "main.h"
@@ -18,7 +18,7 @@ void setup()
 	pinMode(GPIO_TOUCH_BTN, INPUT);
 	EEPROM.begin(1);
 	// Serial.begin(921600);
-	ultrasonic.setup();
+	imu.setup();
 	ddsm210.setup();
 	can_open.setup(0);
 
@@ -55,7 +55,7 @@ void loop()
 		init_done = 1;
 	}
 
-	ultrasonic.loop();
+	imu.loop();
 	ddsm210.loop();	
 	can_open.loop();
 
@@ -83,7 +83,7 @@ void loop_display(void *pvParameters)
 
 void IRAM_ATTR TimerHandler0()
 {
-	//ultrasonic.loop();
 	can_open.cyclic_isr_rx();
 	can_open.cyclic_isr_tx();
+	imu.read_sensor = 1;
 }

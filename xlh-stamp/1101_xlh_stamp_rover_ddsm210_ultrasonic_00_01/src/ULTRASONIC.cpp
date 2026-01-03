@@ -40,14 +40,12 @@ void ULTRASONIC::loop(void)
 	}
 
 	delay(10);
-	//noInterrupts();
 	can_open.out.uiUltrasonic[this->sonic_device] = sensor_sonic.readDistance();
 	this->sonic_device++;
 	if (this->sonic_device > 5)
 		this->sonic_device = 0;
 	//delay(5);
 	this->pcaselect(this->sonic_device);
-	//interrupts();
 }
 
 ULTRASONIC ultrasonic;

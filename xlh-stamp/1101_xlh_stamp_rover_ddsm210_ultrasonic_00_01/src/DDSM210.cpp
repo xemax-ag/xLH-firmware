@@ -35,7 +35,7 @@ void DDSM210::loop(void)
     dc.ddsm_change_mode(1, 2);
   }
 
-  delay(8);
+  delay(1);
   dc.clear_ddsm_buffer();
   dc.ddsm_ctrl(1, can_open.in.iSetSpeed, can_open.in.bySetAccTime);
   //if (can_open.out.iCurrent < can_open.in.iSetCurrentLimit)
@@ -52,7 +52,7 @@ void DDSM210::loop(void)
   // if (can_open.out.iCurrent >= can_open.in.iSetCurrentLimit)
   //	dc.ddsm_ctrl(1, 0, 0);
 
-  delay(8);
+  delay(1);
   dc.clear_ddsm_buffer();
   dc.ddsm_get_info(1);
   // can_open.out.diMileage = dc.mileage;

@@ -78,7 +78,8 @@ void IMU::loop(void)
 	{
 		;
 	}
-
+    
+    delay(5);
 	this->read_bn085();
     can_open.out.fYaw = ypr.yaw;
     can_open.out.fPitch = ypr.pitch;

@@ -1,4 +1,4 @@
-HOST=192.168.1.31
+HOST=192.168.1.169
 USER=xlh
 PASSWORD=xlh
 SERVICE=xlh_grove.service
@@ -40,6 +40,7 @@ ssh_upload:
 	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
 		--exclude .venv \
 		--exclude .idea \
+		--exclude codesys \
 		--exclude misc \
 		--exclude uv.lock \
 		./ ${USER}@${HOST}:xemax/grove

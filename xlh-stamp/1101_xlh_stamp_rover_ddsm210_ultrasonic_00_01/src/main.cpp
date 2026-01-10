@@ -38,18 +38,6 @@ void setup()
 	can_open.bootup();
 
 	// https://www.freertos.org/Documentation/02-Kernel/04-API-references/01-Task-creation/01-xTaskCreate
-	/*
-	xTaskCreatePinnedToCore(
-		loop_display,	// Function to implement the task
-		"loop_display", // Name of the task
-		5000,			// Stack size in bytes
-		NULL,			// Task input parameter
-		0,				// Priority of the task
-		NULL,			// Task handle.
-		0				// Core where the task should run
-	);
-	*/
-
 	TaskHandle_t xHandleDisplay = NULL;
 	xHandleDisplay = xTaskCreateStatic(
 		loop_display,		  /* Function that implements the task. */

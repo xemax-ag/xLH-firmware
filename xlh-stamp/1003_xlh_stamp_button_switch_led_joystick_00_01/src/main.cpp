@@ -5,6 +5,7 @@
 #include <M5AtomS3.h>
 #include <EEPROM.h>
 #include "unit_byte.hpp"
+#include "m5_unit_joystick2.hpp"
 #include "CONFIG.h"
 #include "CAN_OPEN.h"
 #include "TOOLBOX.h"
@@ -21,6 +22,7 @@ StaticTask_t xTaskBufferDisplay;
 
 UnitByte device_switch;
 UnitByte device_button;
+M5UnitJoystick2 joystick2;
 
 void setup()
 {
@@ -30,8 +32,8 @@ void setup()
     EEPROM.begin(1);
 
     Serial.begin(921600);
-    // Wire1.begin(G38, G39, 400000L);
 
+    // Wire1.begin(G38, G39, 400000L);
     device_switch.begin(&Wire1, DEVICE_ID_SWITCH, G38, G39, 4000000L);
     device_switch.setLEDShowMode(BYTE_LED_USER_DEFINED);
     device_button.begin(&Wire1, DEVICE_ID_BUTTON, G38, G39, 4000000L);
@@ -48,6 +50,9 @@ void setup()
     }
     device_switch.setIRQEnable(1);
     device_button.setIRQEnable(1);
+
+    // Wire.begin(G2, G1, 400000L);
+    joystick2.begin(&Wire, JOYSTICK2_ADDR, G2, G1, 400000L);
 
     can_open.setup(0);
 
@@ -123,12 +128,18 @@ void loop()
         }
     }
 
+    uint16_t uiAxisX;
+    uint16_t uiAxisY;
+    joystick2.get_joy_adc_16bits_value_xy(&uiAxisX, &uiAxisY);
+    can_open.out.uiAxisX = uiAxisX;
+    can_open.out.uiAxisY = uiAxisY;
+
     can_open.loop();
 
     can_open.obj_dict_base.refresh_time = micros() - cycle_time_old; // us
     cycle_time_old = micros();
     can_open.obj_dict_base.loop_time = micros() - loop_time_start; // us
-    delay(1); // to allow background processes
+    delay(1);                                                      // to allow background processes
 }
 
 void loop_display(void *pvParameters)

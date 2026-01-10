@@ -26,7 +26,7 @@ void DDSM210::loop(void)
 {
   if (this->init_done == 0)
   {
-    delay(8);
+    delay(1);
     dc.clear_ddsm_buffer();
     // --- DDSM210 ---
     // 0 - open loop, CMD: -32767 ~ 32767

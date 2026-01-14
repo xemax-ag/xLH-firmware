@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.71 (w)1999-2016 BSI
+[*] Sun May 13 05:02:58 2018
+[*]
+[dumpfile] "D:\Dropbox\ABBTS_LABOR_DOZ\MOTION_CONTROL\FPGA_MODUL_MAX1000_DIT_RET_UR\FPGA_MODUL_MAX1000_DIT_RET_UR_00_02\src\FILTER\DIGITAL_INPUT_FILTER\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Sun May 13 05:02:31 2018"
+[dumpfile_size] 3000
+[savefile] "D:\Dropbox\ABBTS_LABOR_DOZ\MOTION_CONTROL\FPGA_MODUL_MAX1000_DIT_RET_UR\FPGA_MODUL_MAX1000_DIT_RET_UR_00_02\src\FILTER\DIGITAL_INPUT_FILTER\vcd\default.gtkw"
+[timestart] 220
+[size] 1918 2098
+[pos] -1 -1
+*-8.142565 54 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 197
+[signals_width] 254
+[sst_expanded] 1
+[sst_vpaned_height] 678
+@28
+ICARUS_TB.dig_inp_filter.CLK
+ICARUS_TB.dig_inp_filter.IN
+ICARUS_TB.dig_inp_filter.OUT
+@200
+-
+@24
+ICARUS_TB.dig_inp_filter.ctr0[4:0]
+@25
+ICARUS_TB.dig_inp_filter.ctr1[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

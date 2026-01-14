@@ -1,0 +1,45 @@
+module RC_SERVO (
+	input CLK,
+	input CLK_CTR,
+	input [15:0] VALUE,
+	output reg OUT);
+	//
+	parameter CTR_LIMIT = 16'd500;
+	//
+	reg [15:0] ctr;
+	reg [15:0] value_temp;
+	reg hri1; reg hri2; reg hri3; reg hri4;
+	//
+	wire clk_ctr_re;
+	//
+	assign clk_ctr_re = (hri1 && !hri2);
+	//
+	initial
+		begin
+			OUT <= 0;
+			//
+			ctr <= 0;
+			value_temp <= CTR_LIMIT;
+		end
+	//
+	always @(posedge CLK)
+	begin
+	//
+	hri1 <= CLK_CTR;
+	hri2 <= hri1;	
+	//
+	ctr <= ctr + 1;
+	//
+	if (ctr >= (CTR_LIMIT - 1))
+		ctr <= 0;
+	//
+	if (ctr == 0)
+		value_temp <= VALUE;
+	//
+	if ((ctr < value_temp) || (value_temp == CTR_LIMIT))
+		OUT <= 1;
+	else
+		OUT <= 0;
+	//
+	end
+endmodule

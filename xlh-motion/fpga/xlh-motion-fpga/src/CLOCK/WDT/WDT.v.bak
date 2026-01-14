@@ -1,0 +1,80 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+module WDT( 
+	input CLK,
+	input CLK_1Hz,
+	input CLK_UC,
+	output reg OUT
+	);
+	localparam time_delay = 120;
+	localparam time_reset = 2;
+	//
+	reg [15:0] counter;
+	reg [15:0] status;
+	//
+	reg		st1;
+	reg		st2;
+	reg		st3;
+	reg		st4;
+	reg		outErr;
+	//
+	wire 	clkImp1Hz;
+	wire 	clkImp1Hz_n;
+	wire 	clkImpUc;
+	wire 	clkImpUc_n;	
+	//
+	assign	clkImp1Hz = (st1 && !st2);
+	assign	clkImp1Hz_n = (!st1 && st2);
+	assign	clkImpUc = (st3 && !st4);
+	assign	clkImpUc_n = (!st3 && st4);
+	//
+	initial
+	begin
+		counter <= 0;
+		status <= 0;
+		OUT <= 1;
+	end
+	//
+	always	@(posedge CLK)
+	begin
+		st1 <= CLK_1Hz;
+		st2 <= st1;	
+		st3 <= CLK_UC;
+		st4 <= st3;	
+		//
+		if (clkImp1Hz) begin
+			if (counter < 30000) begin
+				counter <= counter + 1;
+			end
+		end
+		//
+		if (clkImpUc) begin
+			counter <= 0;
+			status <= 0;
+		end
+		//
+		if (counter >= time_delay) begin
+			status <= 1;
+		end
+		//
+		if (counter >= (time_delay + time_reset)) begin
+			status <= 2;
+		end
+		//
+		if (status == 0) begin
+			OUT <= 1;
+		end
+		//
+		if (status == 1)
+		begin
+			OUT <= 0;
+		end
+		//
+		if (status == 2)
+		begin
+			OUT <= 1;
+			counter <= 0;
+			status <= 0;
+		end		
+	end
+endmodule
+////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Fri Feb 12 16:17:20 2021
+[*]
+[dumpfile] "D:\ABB Technikerschule\GA_SA_SS21 - General\400_FPGA\GA_SA_CYC1000\src\SPI\VAR_8_3_TO_1\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Fri Feb 12 16:17:17 2021"
+[dumpfile_size] 617
+[savefile] "D:\ABB Technikerschule\GA_SA_SS21 - General\400_FPGA\GA_SA_CYC1000\src\SPI\VAR_8_3_TO_1\vcd\default.gtkw"
+[timestart] 4
+[size] 1000 600
+[pos] -1 -1
+*-1.989353 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 211
+[signals_width] 221
+[sst_expanded] 1
+[sst_vpaned_height] 154
+@29
+ICARUS_TB.var_8_3_to_1.IN1[7:0]
+ICARUS_TB.var_8_3_to_1.IN2[7:0]
+ICARUS_TB.var_8_3_to_1.IN3[7:0]
+ICARUS_TB.var_8_3_to_1.OUT[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,54 @@
+module STEPPER_PULSER (
+	input CLK,
+	input DIR,
+	input [31:0] CLK_CMP,
+	output reg DIR_OUT,
+	output reg PULS);
+	//
+	parameter CTR_PULS_LEN = 32'd500;
+	parameter CTR_LIMIT_MIN = 32'd1000;
+	parameter CTR_LIMIT_MAX = 32'd500000;
+	//
+	reg [31:0] ctr;
+	reg [31:0] clk_cmp_temp;
+	//
+	initial
+		begin
+			DIR_OUT <= 0;
+			PULS <= 0;
+			//
+			ctr <= CTR_LIMIT_MAX - 2;
+			clk_cmp_temp <= CTR_LIMIT_MAX - 2;
+		end
+	//
+	always @(posedge CLK)
+	begin
+	if (CLK_CMP > 0)
+		ctr <= ctr + 1;
+	else
+		ctr <= CTR_LIMIT_MAX - 2;
+	//
+	if ((ctr >= clk_cmp_temp) && !PULS)
+		begin
+		ctr <= 0;
+		DIR_OUT <= DIR;
+		//
+		if (CLK_CMP >= CTR_LIMIT_MIN)
+			clk_cmp_temp <= CLK_CMP - 1;
+		else
+			clk_cmp_temp <= CTR_LIMIT_MIN;
+		//
+		if (CLK_CMP <= CTR_LIMIT_MAX)
+			clk_cmp_temp <= CLK_CMP - 1;
+		else
+			clk_cmp_temp <= CTR_LIMIT_MAX;
+		//
+		end
+	//
+	if (ctr < CTR_PULS_LEN)
+		PULS <= 1;
+	else
+		PULS <= 0;
+	//
+	end
+endmodule

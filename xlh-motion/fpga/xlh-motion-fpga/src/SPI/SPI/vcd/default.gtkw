@@ -1,0 +1,72 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Dec 16 08:57:17 2020
+[*]
+[dumpfile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\DIT2_FPGA_B20\TEST_FPGA_TEENSY\FPGA_MODUL_TEENSY_00_12\src\SPI\HOST\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Wed Dec 16 08:56:04 2020"
+[dumpfile_size] 23756
+[savefile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\DIT2_FPGA_B20\TEST_FPGA_TEENSY\FPGA_MODUL_TEENSY_00_12\src\SPI\HOST\vcd\default.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-11.117149 8400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[treeopen] ICARUS_TB.spiHost.
+[sst_width] 211
+[signals_width] 404
+[sst_expanded] 1
+[sst_vpaned_height] 735
+@200
+-SPI_HOST
+@28
+ICARUS_TB.spiHost.CLK
+@200
+-SPI
+@28
+ICARUS_TB.spiHost.SPI_CS
+ICARUS_TB.spiHost.spi_cs_filter
+ICARUS_TB.spiHost.SPI_CLK
+ICARUS_TB.spiHost.spi_clk_filter
+@24
+ICARUS_TB.spiHost.SPI_MOSI
+@28
+ICARUS_TB.spiHost.spi_mosi_filter
+ICARUS_TB.spiHost.SPI_MISO
+@200
+-DATEN
+@28
+ICARUS_TB.spiHost.test_rx_data
+@22
+ICARUS_TB.spiHost.data_rx_temp[519:0]
+ICARUS_TB.spiHost.data_tx_temp[519:0]
+ICARUS_TB.spiHost.DATA_RX[511:0]
+ICARUS_TB.spiHost.DATA_TX[511:0]
+@200
+-HILFSVARIABLEN
+@28
+ICARUS_TB.spiHost.spi_activ
+ICARUS_TB.spiHost.spi_cs_re
+ICARUS_TB.spiHost.spi_cs_fe
+ICARUS_TB.spiHost.spi_clk_re
+ICARUS_TB.spiHost.spi_clk_fe
+@24
+ICARUS_TB.spiHost.spi_clk_ctr[11:0]
+@200
+-INDEX
+@24
+ICARUS_TB.spiHost.i_ctr_data_rx[11:0]
+ICARUS_TB.spiHost.i_ctr_data_tx[11:0]
+@200
+-
+-
+-
+-SPI_INP_FILTER_CLK
+@28
+ICARUS_TB.spiHost.spi_inp_filter_clk.CLK
+ICARUS_TB.spiHost.spi_inp_filter_clk.IN
+ICARUS_TB.spiHost.spi_inp_filter_clk.OUT
+@22
+ICARUS_TB.spiHost.spi_inp_filter_clk.ctr0[4:0]
+ICARUS_TB.spiHost.spi_inp_filter_clk.ctr1[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

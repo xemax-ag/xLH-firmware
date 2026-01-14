@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Fri Apr 03 12:42:04 2020
+[*]
+[dumpfile] "D:\ABB Technikerschule\Entwicklung Lernplattform - Dokumente\Embedded Controller\SOURCE\FPGA_MODUL_TEENSY_RPI_00_02\src\SPI\VAR_12_TO_16_BIT\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Fri Apr 03 12:41:30 2020"
+[dumpfile_size] 1155
+[savefile] "D:\ABB Technikerschule\Entwicklung Lernplattform - Dokumente\Embedded Controller\SOURCE\FPGA_MODUL_TEENSY_RPI_00_02\src\SPI\VAR_12_TO_16_BIT\vcd\default.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-8.000000 2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 211
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 154
+@28
+ICARUS_TB.var_12_to_16_bit.CLK
+@24
+ICARUS_TB.var_12_to_16_bit.IN[11:0]
+@25
+ICARUS_TB.var_12_to_16_bit.OUT[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

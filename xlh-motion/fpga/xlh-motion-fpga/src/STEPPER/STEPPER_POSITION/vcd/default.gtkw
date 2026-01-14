@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Dec 23 13:39:08 2020
+[*]
+[dumpfile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_03\src\STEPPER\STEPPER_COUNTER\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Wed Dec 23 13:38:48 2020"
+[dumpfile_size] 420732
+[savefile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_03\src\STEPPER\STEPPER_COUNTER\vcd\default.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-8.970118 367 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 211
+[signals_width] 310
+[sst_expanded] 1
+[sst_vpaned_height] 89
+@28
+ICARUS_TB.stepper_position.CLK
+@29
+ICARUS_TB.stepper_position.DIR
+@28
+ICARUS_TB.stepper_position.PULS
+ICARUS_TB.stepper_position.RESET
+@420
+ICARUS_TB.stepper_position.POSITION[31:0]
+@200
+-
+@28
+ICARUS_TB.stepper_position.puls_re
+ICARUS_TB.stepper_position.puls_fe
+@20000
+-
+-
+[pattern_trace] 1
+[pattern_trace] 0

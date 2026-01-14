@@ -1,0 +1,181 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2016  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+# Date created = 18:23:55  September 19, 2017
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		MAX1000_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M16SAU169C8G
+set_global_assignment -name TOP_LEVEL_ENTITY MAX1000
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:23:55  SEPTEMBER 19, 2017"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
+set_global_assignment -name SEARCH_PATH src
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_location_assignment PIN_H6 -to SYS_CLK_12MHz
+set_location_assignment PIN_A8 -to LED1
+set_location_assignment PIN_A9 -to LED2
+set_location_assignment PIN_A11 -to LED3
+set_location_assignment PIN_A10 -to LED4
+set_location_assignment PIN_B10 -to LED5
+set_location_assignment PIN_C9 -to LED6
+set_location_assignment PIN_C10 -to LED7
+set_location_assignment PIN_D8 -to LED8
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 5
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 1A
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 2
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 8
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name OPTIMIZATION_MODE BALANCED
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp2.stp
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to SYS_CLK_12MHz
+set_location_assignment PIN_E6 -to USER_BTN_IN
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to USER_BTN_IN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED4
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED7
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED8
+set_global_assignment -name VERILOG_FILE src/UART/UART.v
+set_global_assignment -name BDF_FILE MAX1000.bdf
+set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_global_assignment -name QIP_FILE src/PLL/PLL.qip
+set_global_assignment -name VERILOG_FILE src/CLOCK/GENERATOR/CLOCK_GENERATOR.v
+set_global_assignment -name SIGNALTAP_FILE output_files/stp2.stp
+set_global_assignment -name SIGNALTAP_FILE output_files/st_ta2c.stp
+set_global_assignment -name SOURCE_FILE db/MAX1000.cmp.rdb
+set_global_assignment -name VERILOG_FILE src/FILTER/DIGITAL_INPUT_FILTER/DIG_INP_FILTER.v
+set_global_assignment -name VERILOG_FILE src/CLOCK/WDT/WDT.v
+set_global_assignment -name VERILOG_FILE src/SPI/BIT_BYTE_BIT/BIT_BYTE_BIT.v
+set_global_assignment -name VERILOG_FILE src/MISC/VAR_12_TO_16_BIT/VAR_12_TO_16_BIT.v
+set_global_assignment -name VERILOG_FILE src/MISC/CONST_8/CONST_8.v
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to SPI_CLK
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to SPI_CS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPI_MISO
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to SPI_MOSI
+set_location_assignment PIN_J10 -to SPI_MISO
+set_location_assignment PIN_H10 -to SPI_CS
+set_location_assignment PIN_H13 -to SPI_MOSI
+set_location_assignment PIN_G12 -to SPI_CLK
+set_global_assignment -name VERILOG_FILE src/SPI/SPI/SPI.v
+set_global_assignment -name VERILOG_FILE src/SPI/ZUWEISUNG/ZUWEISUNG.v
+set_global_assignment -name VERILOG_FILE src/RC_SERVO/RC_SERVO.v
+set_global_assignment -name VERILOG_FILE src/STEPPER/STEPPER_POSITION/STEPPER_POSITION.v
+set_global_assignment -name VERILOG_FILE src/STEPPER/STEPPER_PULSER/STEPPER_PULSER.v
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM1_DIR
+set_location_assignment PIN_E1 -to SM1_DIR
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM1_EN
+set_location_assignment PIN_C1 -to SM1_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM1_STEP
+set_location_assignment PIN_C2 -to SM1_STEP
+set_global_assignment -name VERILOG_FILE src/PWM/PWM.v
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM2_DIR
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM2_STEP
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM3_DIR
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM3_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM3_STEP
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM4_DIR
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM4_EN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM4_STEP
+set_location_assignment PIN_D1 -to SM2_DIR
+set_location_assignment PIN_F1 -to SM2_EN
+set_location_assignment PIN_E3 -to SM2_STEP
+set_location_assignment PIN_E4 -to SM3_DIR
+set_location_assignment PIN_K10 -to SM3_EN
+set_location_assignment PIN_H8 -to SM3_STEP
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SM2_EN
+set_location_assignment PIN_H5 -to SM4_DIR
+set_location_assignment PIN_J1 -to SM4_EN
+set_location_assignment PIN_H4 -to SM4_STEP
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 1B
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 6
+set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 3
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_12
+set_location_assignment PIN_J12 -to IO_12
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_01
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_02
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_03
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_04
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_05
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_06
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_07
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_08
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_09
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_10
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_11
+set_location_assignment PIN_K2 -to IO_01
+set_location_assignment PIN_M3 -to IO_06
+set_location_assignment PIN_L3 -to IO_02
+set_location_assignment PIN_M2 -to IO_03
+set_location_assignment PIN_N3 -to IO_07
+set_location_assignment PIN_N2 -to IO_08
+set_location_assignment PIN_K1 -to IO_04
+set_location_assignment PIN_L12 -to IO_05
+set_location_assignment PIN_K12 -to IO_09
+set_location_assignment PIN_K11 -to IO_10
+set_location_assignment PIN_J13 -to IO_11
+set_global_assignment -name SIP_FILE src/IP_CORE.sip
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OM
+set_location_assignment PIN_J2 -to OM
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_13
+set_location_assignment PIN_B1 -to IO_13
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_14
+set_location_assignment PIN_M1 -to IO_14
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

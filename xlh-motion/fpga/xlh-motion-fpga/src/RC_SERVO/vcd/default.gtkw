@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Tue Dec 22 16:02:18 2020
+[*]
+[dumpfile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_02\src\RC_SERVO\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Tue Dec 22 15:48:08 2020"
+[dumpfile_size] 605571
+[savefile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_02\src\RC_SERVO\vcd\default.gtkw"
+[timestart] 349
+[size] 1920 1147
+[pos] -1 -1
+*-5.970118 660 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 211
+[signals_width] 310
+[sst_expanded] 1
+[sst_vpaned_height] 89
+@28
+ICARUS_TB.rc_servo.CLK
+ICARUS_TB.rc_servo.CLK_CTR
+@22
+ICARUS_TB.rc_servo.VALUE[15:0]
+@28
+ICARUS_TB.rc_servo.OUT
+@200
+-
+@28
+ICARUS_TB.rc_servo.clk_ctr_re
+@200
+-
+@25
+ICARUS_TB.rc_servo.value_temp[15:0]
+@c00024
+ICARUS_TB.rc_servo.ctr[15:0]
+@28
+(0)ICARUS_TB.rc_servo.ctr[15:0]
+(1)ICARUS_TB.rc_servo.ctr[15:0]
+(2)ICARUS_TB.rc_servo.ctr[15:0]
+(3)ICARUS_TB.rc_servo.ctr[15:0]
+(4)ICARUS_TB.rc_servo.ctr[15:0]
+(5)ICARUS_TB.rc_servo.ctr[15:0]
+(6)ICARUS_TB.rc_servo.ctr[15:0]
+(7)ICARUS_TB.rc_servo.ctr[15:0]
+(8)ICARUS_TB.rc_servo.ctr[15:0]
+(9)ICARUS_TB.rc_servo.ctr[15:0]
+(10)ICARUS_TB.rc_servo.ctr[15:0]
+(11)ICARUS_TB.rc_servo.ctr[15:0]
+(12)ICARUS_TB.rc_servo.ctr[15:0]
+(13)ICARUS_TB.rc_servo.ctr[15:0]
+(14)ICARUS_TB.rc_servo.ctr[15:0]
+(15)ICARUS_TB.rc_servo.ctr[15:0]
+@1401200
+-group_end
+@20000
+-
+-
+[pattern_trace] 1
+[pattern_trace] 0

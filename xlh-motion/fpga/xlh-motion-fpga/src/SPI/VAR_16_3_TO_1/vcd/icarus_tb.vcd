@@ -1,0 +1,58 @@
+$date
+	Fri Feb 12 17:03:38 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module ICARUS_TB $end
+$var wire 16 ! out [15:0] $end
+$var reg 1 " clk $end
+$var reg 16 # in1 [15:0] $end
+$var reg 16 $ in2 [15:0] $end
+$var reg 16 % in3 [15:0] $end
+$scope module var_16_3_to_1 $end
+$var wire 1 " CLK $end
+$var wire 16 & IN1 [15:0] $end
+$var wire 16 ' IN2 [15:0] $end
+$var wire 16 ( IN3 [15:0] $end
+$var reg 16 ) OUT [15:0] $end
+$var reg 3 * state [2:0] $end
+$var reg 16 + temp [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1011001001000100 +
+b1 *
+b0 )
+b111010100110000 (
+b1011000111100000 '
+b1100100 &
+b111010100110000 %
+b1011000111100000 $
+b1100100 #
+1"
+b0 !
+$end
+#10
+0"
+#20
+b10011101110100 !
+b10011101110100 )
+1"
+#30
+0"
+#40
+1"
+#50
+0"
+#60
+1"
+#70
+0"
+#80
+1"

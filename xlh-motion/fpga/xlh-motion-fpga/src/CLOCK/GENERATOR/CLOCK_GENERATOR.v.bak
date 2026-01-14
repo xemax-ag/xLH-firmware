@@ -1,0 +1,128 @@
+module 	CLOCK_GENERATOR(
+	input CLK, 
+	output reg CLOCK_3MHz,
+	output reg CLOCK_2MHz,
+	output reg CLOCK_1MHz,
+	output reg CLOCK_100kHz,
+	output reg CLOCK_75kHz,	
+	output reg CLOCK_50kHz,	
+	output reg CLOCK_10kHz,	
+	output reg CLOCK_5kHz,	
+	output reg CLOCK_1kHz,
+	output reg CLOCK_100Hz,
+	output reg CLOCK_10Hz,
+	output reg CLOCK_1Hz);
+//
+// ToDo: Optimierung der Bitbreite
+reg	[31:0]COUNTER3M;
+reg	[31:0]COUNTER2M;
+reg	[31:0]COUNTER1M;
+reg	[31:0]COUNTER100k;
+reg	[31:0]COUNTER75k;
+reg	[31:0]COUNTER50k;
+reg	[31:0]COUNTER10k;
+reg	[31:0]COUNTER5k;
+reg	[31:0]COUNTER1k;
+reg	[31:0]COUNTER100;
+reg	[31:0]COUNTER10;
+reg	[31:0]COUNTER1;
+//
+initial begin
+	COUNTER3M <= 0;
+	COUNTER2M <= 0;
+ 	COUNTER1M <= 0;
+ 	COUNTER100k <= 0;
+	COUNTER75k <= 0;
+	COUNTER50k <= 0;
+	COUNTER10k <= 0;
+	COUNTER1k <= 0;
+	COUNTER5k <= 0;
+	COUNTER100 <= 0;
+	COUNTER10 <= 0;
+	COUNTER1 <= 0;
+ end
+//
+always @(posedge CLK) begin
+	//
+	COUNTER3M <= COUNTER3M + 1;
+	COUNTER2M <= COUNTER2M + 1;
+	COUNTER1M <= COUNTER1M + 1;
+	COUNTER100k <= COUNTER100k + 1;
+	COUNTER75k <= COUNTER75k + 1;
+	COUNTER50k <= COUNTER50k + 1;
+	COUNTER10k <= COUNTER10k + 1;
+	COUNTER5k <= COUNTER5k + 1;
+ 	COUNTER1k <= COUNTER1k + 1;
+	COUNTER100 <= COUNTER100 + 1;
+	COUNTER10 <= COUNTER10 + 1;
+	COUNTER1 <= COUNTER1 + 1;
+	//
+	if(COUNTER3M == 2) begin
+		COUNTER3M <= 0;
+		CLOCK_3MHz <= !CLOCK_3MHz;
+	end
+	//
+	if(COUNTER2M == 3) begin
+		COUNTER2M <= 0;
+		CLOCK_2MHz <= !CLOCK_2MHz;
+	end
+	//
+	if(COUNTER1M == 6) begin
+		COUNTER1M <= 0;
+		CLOCK_1MHz <= !CLOCK_1MHz;
+	end
+	//
+	if(COUNTER1M == 6) begin
+		COUNTER1M <= 0;
+		CLOCK_1MHz <= !CLOCK_1MHz;
+	end			
+	//
+	if(COUNTER100k == 60) begin
+		COUNTER100k <= 0;
+		CLOCK_100kHz <= !CLOCK_100kHz;
+	end	
+	//
+	if(COUNTER75k == 80) begin
+		COUNTER75k <= 0;
+		CLOCK_75kHz <= !CLOCK_75kHz;
+	end	
+	//
+	if(COUNTER50k == 120) begin
+		COUNTER50k <= 0;
+		CLOCK_50kHz <= !CLOCK_50kHz;
+	end	
+	//
+	if(COUNTER10k == 600) begin
+		COUNTER10k <= 0;
+		CLOCK_10kHz <= !CLOCK_10kHz;
+	end	
+	//
+	if(COUNTER5k == 1200) begin
+		COUNTER5k <= 0;
+		CLOCK_5kHz <= !CLOCK_5kHz;
+	end	
+	//
+	if(COUNTER1k == 6000) begin
+		COUNTER1k <= 0;
+		CLOCK_1kHz <= !CLOCK_1kHz;
+	end		
+	//
+	if(COUNTER100 == 60000) begin
+		COUNTER100 <= 0;
+		CLOCK_100Hz <= !CLOCK_100Hz;
+	end	
+	//
+	if(COUNTER10 == 600000) begin
+		COUNTER10 <= 0;
+		CLOCK_10Hz <= !CLOCK_10Hz;
+	end	
+	//
+	if(COUNTER1 == 6000000) begin
+		COUNTER1 <= 0;
+		CLOCK_1Hz <= !CLOCK_1Hz;
+	end	
+	//
+end
+//
+endmodule
+

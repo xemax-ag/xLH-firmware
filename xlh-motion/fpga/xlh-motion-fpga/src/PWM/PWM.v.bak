@@ -1,0 +1,31 @@
+module PWM(
+	input CLK,
+	input [15:0] CMP,
+	output reg OUT);
+	//
+	reg [15:0] ctr;
+	reg [15:0] dc_temp;
+	//
+	initial
+	begin
+		OUT <= 0;
+		ctr <= 16'h0;
+		dc_temp <= 16'h0;
+	end
+	//
+	always @(posedge CLK)
+	begin
+		ctr <= ctr + 1;
+		if (ctr == 16'hFFFE)
+			begin
+			dc_temp <= CMP;
+			ctr <= 0;
+			end
+		//
+		if (ctr < dc_temp)
+			OUT <= 1;
+		else
+			OUT <= 0;
+		//
+	end
+endmodule

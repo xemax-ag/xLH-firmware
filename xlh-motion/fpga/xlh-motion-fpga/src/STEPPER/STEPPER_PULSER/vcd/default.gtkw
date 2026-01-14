@@ -1,0 +1,67 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Dec 23 13:05:20 2020
+[*]
+[dumpfile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_03\src\STEPPER\STEPPER_PULSER\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Wed Dec 23 12:51:26 2020"
+[dumpfile_size] 163081
+[savefile] "D:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\SS21\MOTION_CONTROL\TESTAUFBAU\FPGA\DE10_LITE_00_03\src\STEPPER\STEPPER_PULSER\vcd\default.gtkw"
+[timestart] 264
+[size] 1920 1147
+[pos] -1 -1
+*-9.000000 677 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 257
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 336
+@28
+ICARUS_TB.stepper_pulser.CLK
+ICARUS_TB.stepper_pulser.DIR
+@c00025
+ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+@29
+(0)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(1)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(2)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(3)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(4)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(5)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(6)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(7)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(8)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(9)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(10)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(11)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(12)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(13)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(14)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(15)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(16)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(17)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(18)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(19)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(20)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(21)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(22)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(23)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(24)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(25)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(26)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(27)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(28)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(29)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(30)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+(31)ICARUS_TB.stepper_pulser.CLK_CMP[31:0]
+@1401201
+-group_end
+@28
+ICARUS_TB.stepper_pulser.DIR_OUT
+ICARUS_TB.stepper_pulser.PULS
+@200
+-
+@24
+ICARUS_TB.stepper_pulser.clk_cmp_temp[31:0]
+ICARUS_TB.stepper_pulser.ctr[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

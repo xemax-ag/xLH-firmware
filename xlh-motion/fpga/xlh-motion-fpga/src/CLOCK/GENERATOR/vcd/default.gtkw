@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.71 (w)1999-2016 BSI
+[*] Sun May 13 11:53:11 2018
+[*]
+[dumpfile] "D:\Dropbox\ABBTS_LABOR_DOZ\MOTION_CONTROL\FPGA_MODUL_MAX1000_DIT_RET_UR\FPGA_MODUL_MAX1000_DIT_RET_UR_00_02\src\CLOCK\GENERATOR\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Sun May 13 11:40:14 2018"
+[dumpfile_size] 10354523
+[savefile] "D:\Dropbox\ABBTS_LABOR_DOZ\MOTION_CONTROL\FPGA_MODUL_MAX1000_DIT_RET_UR\FPGA_MODUL_MAX1000_DIT_RET_UR_00_02\src\CLOCK\GENERATOR\vcd\default.gtkw"
+[timestart] 0
+[size] 1918 2098
+[pos] -1 -1
+*-14.000000 601300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 197
+[signals_width] 254
+[sst_expanded] 1
+[sst_vpaned_height] 678
+@28
+ICARUS_TB.clock_generator.CLK
+ICARUS_TB.clock_generator.CLOCK_5MHz
+ICARUS_TB.clock_generator.CLOCK_1MHz
+ICARUS_TB.clock_generator.CLOCK_500kHz
+@29
+ICARUS_TB.clock_generator.CLOCK_100kHz
+@28
+ICARUS_TB.clock_generator.CLOCK_50kHz
+ICARUS_TB.clock_generator.CLOCK_10kHz
+ICARUS_TB.clock_generator.CLOCK_5kHz
+ICARUS_TB.clock_generator.CLOCK_1kHz
+ICARUS_TB.clock_generator.CLOCK_500Hz
+ICARUS_TB.clock_generator.CLOCK_10Hz
+ICARUS_TB.clock_generator.CLOCK_5Hz
+ICARUS_TB.clock_generator.CLOCK_1Hz
+[pattern_trace] 1
+[pattern_trace] 0

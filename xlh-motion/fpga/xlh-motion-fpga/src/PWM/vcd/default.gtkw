@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Dec 16 09:39:02 2021
+[*]
+[dumpfile] "E:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\DIT2_FPGA_B21\400_UEBUNGEN_VERILOG\5_PWM\vcd\icarus_tb.vcd"
+[dumpfile_mtime] "Thu Dec 16 09:38:34 2021"
+[dumpfile_size] 415275
+[savefile] "E:\ABB Technikerschule\Systemtechnik - Unterrichtsdokumente\20_Fächer\DIT2_FPGA\DIT2_FPGA_B21\400_UEBUNGEN_VERILOG\5_PWM\vcd\default.gtkw"
+[timestart] 3836
+[size] 1377 519
+[pos] -1 -1
+*-6.826862 28 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ICARUS_TB.
+[sst_width] 211
+[signals_width] 254
+[sst_expanded] 1
+[sst_vpaned_height] 60
+@28
+ICARUS_TB.pwm.CLK
+@22
+ICARUS_TB.pwm.DC[3:0]
+@28
+ICARUS_TB.pwm.OUT
+@20000
+-
+-
+-
+[pattern_trace] 1
+[pattern_trace] 0

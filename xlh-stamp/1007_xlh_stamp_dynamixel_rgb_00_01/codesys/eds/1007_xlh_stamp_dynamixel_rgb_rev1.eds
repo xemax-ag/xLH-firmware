@@ -6,18 +6,18 @@ FileName=1007_xlh_stamp_dynamixel_rgb_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
-Description=xlh_stamp_dynamixel_rgb
-CreationTime=11:37AM
+Description=xlh_dynamixel_rgb
+CreationTime=11:55AM
 CreationDate=01-15-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=11:37AM
+ModificationTime=11:55AM
 ModificationDate=01-15-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
 VendorName=xemax ag
 VendorNumber=0x0321
-ProductName=xlh_stamp_dynamixel_rgb
+ProductName=xlh_dynamixel_rgb
 ProductNumber=0x03EF
 RevisionNumber=0x0001
 OrderCode=0

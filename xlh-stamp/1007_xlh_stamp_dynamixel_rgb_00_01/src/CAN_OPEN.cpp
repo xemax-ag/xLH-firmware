@@ -128,12 +128,12 @@ void CAN_OPEN::tx_pdo_1(void)
 void CAN_OPEN::reset_output(void)
 {
   CAN_OPEN_BASE::reset_output();
-  this->in.byDxl1Control = 0;
-  this->in.uiDxl1Position = 0;
-  this->in.uiDxl1Velocity = 0;
-  this->in.byDxl2Control = 0;
-  this->in.uiDxl2Position = 0;
-  this->in.uiDxl2Velocity = 0;
+  // this->in.byDxl1Control = 0;
+  // this->in.uiDxl1Position = 1024;
+  // this->in.uiDxl1Velocity = 0;
+  // this->in.byDxl2Control = 0;
+  // this->in.uiDxl2Position = 1024;
+  // this->in.uiDxl2Velocity = 0;
   this->in.byRgbRed = 0;
   this->in.byRgbGreen = 0;
   this->in.byRgbBlue = 0;

@@ -5,7 +5,7 @@
 #include <M5AtomS3.h>
 #include <EEPROM.h>
 #include "unit_byte.hpp"
-#include "m5_unit_joystick2.hpp"
+// #include "m5_unit_joystick2.hpp"
 #include "CONFIG.h"
 #include "CAN_OPEN.h"
 #include "TOOLBOX.h"
@@ -13,6 +13,7 @@
 
 #define DEVICE_ID_SWITCH 0x46 // SWITCH
 #define DEVICE_ID_BUTTON 0x47 // BUTTON
+#define JOY_ADDR (0x52)       // define Joystick I2C address.
 
 hw_timer_t *timer0 = NULL;
 
@@ -20,9 +21,13 @@ hw_timer_t *timer0 = NULL;
 StackType_t xStackDisplay[STACK_SIZE_DISPLAY];
 StaticTask_t xTaskBufferDisplay;
 
+#define STACK_SIZE_JOYSTICK 5000
+StackType_t xStackJoystick[STACK_SIZE_JOYSTICK];
+StaticTask_t xTaskBufferJoystick;
+
 UnitByte device_switch;
 UnitByte device_button;
-M5UnitJoystick2 joystick2;
+// M5UnitJoystick2 joystick2;
 
 void setup()
 {
@@ -51,8 +56,8 @@ void setup()
     device_switch.setIRQEnable(1);
     device_button.setIRQEnable(1);
 
-    // Wire.begin(G2, G1, 400000L);
-    joystick2.begin(&Wire, JOYSTICK2_ADDR, G2, G1, 400000L);
+    Wire.begin(G2, G1, 100000L);
+    // joystick2.begin(&Wire, JOYSTICK2_ADDR, G2, G1, 400000L);
 
     can_open.setup(0);
 
@@ -74,6 +79,16 @@ void setup()
         0,                    /* Priority at which the task is created. */
         xStackDisplay,        /* Array to use as the task's stack. */
         &xTaskBufferDisplay); /* Variable to hold the task's data structure. */
+
+    TaskHandle_t xHandleJoystick = NULL;
+    xHandleJoystick = xTaskCreateStatic(
+        loop_joystick,         /* Function that implements the task. */
+        "loop_joystick",       /* Text name for the task. */
+        STACK_SIZE_JOYSTICK,   /* Number of indexes in the xStack array. */
+        NULL,                  /* Parameter passed into the task. */
+        10,                    /* Priority at which the task is created. */
+        xStackJoystick,        /* Array to use as the task's stack. */
+        &xTaskBufferJoystick); /* Variable to hold the task's data structure. */
 }
 
 void loop()
@@ -128,12 +143,6 @@ void loop()
         }
     }
 
-    uint16_t uiAxisX;
-    uint16_t uiAxisY;
-    joystick2.get_joy_adc_16bits_value_xy(&uiAxisX, &uiAxisY);
-    can_open.out.uiAxisX = uiAxisX;
-    can_open.out.uiAxisY = uiAxisY;
-
     can_open.loop();
 
     can_open.obj_dict_base.refresh_time = micros() - cycle_time_old; // us
@@ -148,6 +157,22 @@ void loop_display(void *pvParameters)
     {
         visu_loop();
         delay(10);
+    }
+}
+
+void loop_joystick(void *pvParameters)
+{
+    while (1)
+    {
+        Wire.requestFrom(JOY_ADDR,
+                         3); // Request 3 bytes from the slave device.
+        if (Wire.available())
+        { // If data is received.
+            can_open.out.byJstAxisX = Wire.read();
+            can_open.out.byJstAxisY = Wire.read();
+            can_open.out.byJstButton = Wire.read();
+        }
+        delay(1);
     }
 }
 

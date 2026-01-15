@@ -3,5 +3,6 @@
 
 void IRAM_ATTR TimerHandler0();
 void loop_display(void *pvParameters);
+void loop_joystick(void *pvParameters);
 
 #endif

@@ -15,8 +15,9 @@ typedef struct
 {
   uint8_t byInputsButton;
   uint8_t byInputsSwitch;
-  uint16_t uiAxisX;
-  uint16_t uiAxisY;
+  uint8_t byJstAxisX;
+  uint8_t byJstAxisY;
+  uint8_t byJstButton;
 } s_out;
 
 class CAN_OPEN: public CAN_OPEN_BASE

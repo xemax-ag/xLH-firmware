@@ -36,9 +36,11 @@ void CAN_OPEN::tx_pdo_1(void)
     this->pdo_tx_1_send_msg = 1;
   if (this->out.byInputsSwitch != this->out_old.byInputsSwitch)
     this->pdo_tx_1_send_msg = 1;
-  if (this->out.uiAxisX != this->out_old.uiAxisX)
+  if (this->out.byJstAxisX != this->out_old.byJstAxisX)
     this->pdo_tx_1_send_msg = 1;
-  if (this->out.uiAxisY != this->out_old.uiAxisY)
+  if (this->out.byJstAxisY != this->out_old.byJstAxisY)
+    this->pdo_tx_1_send_msg = 1;
+  if (this->out.byJstButton != this->out_old.byJstButton)
     this->pdo_tx_1_send_msg = 1;
 
   if ((this->node_guard_state == NODE_GUARD_STATE_OPERATIONAL) && (this->pdo_tx_1_send_msg == 1))
@@ -48,26 +50,23 @@ void CAN_OPEN::tx_pdo_1(void)
 
     this->pdo_tx_1_send_msg = 0;
     tx_frame.extd = 0;
-    tx_frame.data_length_code = 6;
+    tx_frame.data_length_code = 5;
     tx_frame.identifier = this->pdo_tx_1_id;
-    
+
     tx_frame.data[0] = this->out.byInputsButton;
     tx_frame.data[1] = this->out.byInputsSwitch;
-    
-    canMsgDataIntToByte.uiValue = this->out.uiAxisX;
-    tx_frame.data[2] = canMsgDataIntToByte.abyValue[0];
-    tx_frame.data[3] = canMsgDataIntToByte.abyValue[1];
 
-    canMsgDataIntToByte.uiValue = this->out.uiAxisY;
-    tx_frame.data[4] = canMsgDataIntToByte.abyValue[0];
-    tx_frame.data[5] = canMsgDataIntToByte.abyValue[1];
+    tx_frame.data[2] = this->out.byJstAxisX;
+    tx_frame.data[3] = this->out.byJstAxisY;
+    tx_frame.data[4] = this->out.byJstButton;
 
     ESP32Can.writeFrame(&tx_frame);
 
     this->out_old.byInputsButton = this->out.byInputsButton;
     this->out_old.byInputsSwitch = this->out.byInputsSwitch;
-    this->out_old.uiAxisX = this->out.uiAxisX;
-    this->out_old.uiAxisY = this->out.uiAxisY;
+    this->out_old.byJstAxisX = this->out.byJstAxisX;
+    this->out_old.byJstAxisY = this->out.byJstAxisY;
+    this->out_old.byJstButton = this->out.byJstButton;
   }
 }
 

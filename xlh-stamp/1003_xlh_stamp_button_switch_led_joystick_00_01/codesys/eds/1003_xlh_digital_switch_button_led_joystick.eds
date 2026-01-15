@@ -7,11 +7,11 @@ FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_digital_switch_button_led_joystick
-CreationTime=12:37PM
-CreationDate=01-10-2026
+CreationTime=04:26PM
+CreationDate=01-14-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=12:37PM
-ModificationDate=01-10-2026
+ModificationTime=04:26PM
+ModificationDate=01-14-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
@@ -380,7 +380,7 @@ DefaultValue=0x0
 PDOMapping=0
 
 [1A00]
-SubNumber=5
+SubNumber=6
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -389,7 +389,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x04
+DefaultValue=0x05
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -419,7 +419,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38030110
+DefaultValue=0x38030108
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -429,7 +429,17 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38030210
+DefaultValue=0x38030208
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1A00sub5]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x38030308
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -535,7 +545,7 @@ AccessType=ro
 PDOMapping=0
 
 [3803]
-SubNumber=3
+SubNumber=4
 ParameterName=Joystick
 ObjectType=0x08
 
@@ -544,20 +554,27 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x2
+DefaultValue=0x3
 PDOMapping=0
 
 [3803sub1]
 ParameterName=Joystick X
 ObjectType=0x07
-DataType=0x0006
+DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3803sub2]
 ParameterName=Joystick Y
 ObjectType=0x07
-DataType=0x0006
+DataType=0x0005
+AccessType=ro
+PDOMapping=1
+
+[3803sub3]
+ParameterName=Joystick Button
+ObjectType=0x07
+DataType=0x0005
 AccessType=ro
 PDOMapping=1
 

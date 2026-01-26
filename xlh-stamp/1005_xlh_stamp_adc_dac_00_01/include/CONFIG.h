@@ -1,6 +1,8 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
+#define USING_UNIT_ADC11
+
 #define VERSION "0.01 | REV1"
 #define PDO_TX_1_ADC_HYSTERESIS 0
 #define GPIO_TOUCH_BTN GPIO_NUM_41

@@ -4,15 +4,11 @@
 #include <Arduino.h>
 #include <M5AtomS3.h>
 #include <EEPROM.h>
-#include "M5_ADS1100.h"
 #include <DFRobot_GP8XXX.h>
 #include "CONFIG.h"
 #include "CAN_OPEN.h"
 #include "TOOLBOX.h"
 #include "main.h"
-
-#define DEVICE_ID_SWITCH 0x46 // SWITCH
-#define DEVICE_ID_BUTTON 0x47 // BUTTON
 
 hw_timer_t *timer0 = NULL;
 
@@ -20,24 +16,15 @@ hw_timer_t *timer0 = NULL;
 StackType_t xStackDisplay[STACK_SIZE_DISPLAY];
 StaticTask_t xTaskBufferDisplay;
 
+#define STACK_SIZE_DAC 5000
+StackType_t xStackDac[STACK_SIZE_DAC];
+StaticTask_t xTaskBufferDac;
+
 // DAC2
 DFRobot_GP8XXX_IIC dac2_ext(RESOLUTION_15_BIT, 0x59, &Wire1);
 
 // ADS
-ADS1100 ads;
-
-void setDacVoltage(uint16_t vol, uint8_t ch) {
-    uint16_t setting_vol = 0;
-    if (vol > 10000) {
-        vol = 10000;
-    }
-    if (ch > 1) ch = 1;
-    setting_vol = (int16_t)((float)vol / 10000.0f * 32767.0f);
-    if (setting_vol > 32767) {
-        setting_vol = 32767;
-    }
-    dac2_ext.setDACOutVoltage(setting_vol, ch);
-}
+const int ADS1110_ADDRESS = 0x48; // I2C address of the ADS1110
 
 void setup()
 {
@@ -49,32 +36,14 @@ void setup()
     Serial.begin(921600);
     // Wire1.begin(G38, G39, 400000L);
 
-        // The address can be changed making the option of connecting multiple
-    // devices 地址可以改变，以连接多个设备
-    ads.getAddr_ADS1100(
-        ADS1100_DEFAULT_ADDRESS);  // 0x48, 1001 000 (ADDR = GND)
-
-    // The ADC gain (PGA).  ADC增益(PGA)
-    ads.setGain(GAIN_ONE);  // 1x gain(default)
-    // ads.setGain(GAIN_TWO);       // 2x gain
-    // ads.setGain(GAIN_FOUR);      // 4x gain
-    // ads.setGain(GAIN_EIGHT);     // 8x gain
-
-    // Device operating mode.  设备工作模式
-    ads.setMode(MODE_CONTIN);  // Continuous conversion mode (default)
-    // ads.setMode(MODE_SINGLE);    // Single-conversion mode
-
-    // Data rate.  数据速率
-    ads.setRate(RATE_8);  // 8SPS (default)
-    // ads.setRate(RATE_16);        // 16SPS
-    // ads.setRate(RATE_32);        // 32SPS
-    // ads.setRate(RATE_128);       // 128SPS
-
-    ads.setOSMode(
-        OSMODE_SINGLE);  // Set to start a single-conversion.  设置开始一次转换
-
-    ads.begin();  // Sets up the Hardware.  设置硬件
-
+    // ADS1110
+    Wire.begin(G2, G1, 100000L);
+    // Configure the ADS1110
+    //Wire.beginTransmission(ADS1110_ADDRESS);
+    //Wire.write(0x85); // Config register address
+    //Wire.write(0x83); // Single-ended measurement on AIN0, gain = 2/3, mode = continuous conversion, data rate = 860 SPS
+    //Wire.endTransmission();
+    
     dac2_ext.begin();
 
     can_open.setup(0);
@@ -97,6 +66,16 @@ void setup()
         0,                    /* Priority at which the task is created. */
         xStackDisplay,        /* Array to use as the task's stack. */
         &xTaskBufferDisplay); /* Variable to hold the task's data structure. */
+
+    TaskHandle_t xHandleDac = NULL;
+    xHandleDac = xTaskCreateStatic(
+        loop_dac,         /* Function that implements the task. */
+        "loop_dac",       /* Text name for the task. */
+        STACK_SIZE_DAC,   /* Number of indexes in the xStack array. */
+        NULL,             /* Parameter passed into the task. */
+        10,               /* Priority at which the task is created. */
+        xStackDac,        /* Array to use as the task's stack. */
+        &xTaskBufferDac); /* Variable to hold the task's data structure. */
 }
 
 void loop()
@@ -104,17 +83,28 @@ void loop()
     static uint32_t cycle_time_old;
     uint32_t loop_time_start;
     byte error;
-    int8_t address;
 
     loop_time_start = micros();
 
-    address = ads.ads_i2cAddress;
-    Wire.beginTransmission(address);
-    error = Wire.endTransmission();
-    can_open.out.iAdc = ads.Measure_Differential();
+    // https://docs.m5stack.com/en/unit/Unit-ADC_V1.1
+    // https://www.robotics.org.za/ADS1110-MOD
+    // https://www.ti.com/lit/ds/symlink/ads1110.pdf page 11
+    // Start a conversion
+    Wire.beginTransmission(ADS1110_ADDRESS);
+    Wire.write(0b10000100); // Conversion register address PGA 1, SPS 60, 14-Bit
+    Wire.endTransmission();
+    
+    // Wait for the conversion to finish
+    delay(18);
+    
+    // Read the conversion result (MSB first)
+    Wire.requestFrom(ADS1110_ADDRESS, 2);
+    byte msb = Wire.read();
+    byte lsb = Wire.read();
+    int result = (msb << 8) | lsb;
+    result = result * 4;// scale +- 2^15
+    can_open.out.iAdc = result;
 
-    dac2_ext.setDACOutVoltage(can_open.in.uiDac0, 0);
-    dac2_ext.setDACOutVoltage(can_open.in.uiDac1, 1);
 
     can_open.loop();
 
@@ -130,6 +120,16 @@ void loop_display(void *pvParameters)
     {
         visu_loop();
         delay(10);
+    }
+}
+
+void loop_dac(void *pvParameters)
+{
+    while (1)
+    {
+        dac2_ext.setDACOutVoltage(can_open.in.uiDac0, 0);
+        dac2_ext.setDACOutVoltage(can_open.in.uiDac1, 1);
+        delay(4);
     }
 }
 

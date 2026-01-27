@@ -1,0 +1,521 @@
+[Comments]
+Lines=0
+
+[FileInfo]
+FileName=1002_xlh_stamp_digital_switch_button_led_rev1.eds
+FileVersion=1
+FileRevision=0
+EDSVersion=4.0
+Description=xlh_digital_switch_button_led
+CreationTime=02:42PM
+CreationDate=01-27-2026
+CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
+ModificationTime=02:42PM
+ModificationDate=01-27-2026
+ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
+
+[DeviceInfo]
+VendorName=xemax ag
+VendorNumber=0x0321
+ProductName=xlh_digital_switch_button_led
+ProductNumber=0x03EA
+RevisionNumber=0x0001
+OrderCode=0
+BaudRate_10=1
+BaudRate_20=1
+BaudRate_50=1
+BaudRate_125=1
+BaudRate_250=1
+BaudRate_500=1
+BaudRate_800=1
+BaudRate_1000=1
+DynamicChannelsSupported=0
+GroupMessaging=0
+LSS_Supported=0
+Granularity=0
+SimpleBootUpSlave=0
+SimpleBootUpMaster=0
+NrOfRXPDO=1
+NrOfTXPDO=1
+
+[DummyUsage]
+Dummy0001=0
+Dummy0002=0
+Dummy0003=0
+Dummy0004=0
+Dummy0005=0
+Dummy0006=0
+Dummy0007=0
+
+[MandatoryObjects]
+SupportedObjects=3
+1=0x1000
+2=0x1001
+3=0x1018
+
+[OptionalObjects]
+SupportedObjects=11
+1=0x1003
+2=0x1005
+3=0x1006
+4=0x100C
+5=0x100D
+6=0x1016
+7=0x1200
+8=0x1400
+9=0x1600
+10=0x1800
+11=0x1A00
+
+[ManufacturerObjects]
+SupportedObjects=5
+1=0x3000
+2=0x3001
+3=0x3800
+4=0x3801
+5=0x5800
+
+[1000]
+ParameterName=Device Type
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x0
+PDOMapping=0
+
+[1001]
+ParameterName=Error Register
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x0
+PDOMapping=0
+
+[1003]
+SubNumber=4
+ParameterName=Predefined Error Field
+ObjectType=0x08
+
+[1003sub0]
+ParameterName=Number of Errors
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0
+PDOMapping=0
+
+[1003sub1]
+ParameterName=Standard Error Field
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1003sub2]
+ParameterName=Standard Error Field 2
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1003sub3]
+ParameterName=Standard Error Field 3
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[1005]
+ParameterName=Sync COB-ID
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x80
+PDOMapping=0
+
+[1006]
+ParameterName=Communication Cycle Period
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x0
+PDOMapping=0
+
+[100C]
+ParameterName=Guard Time
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=200
+PDOMapping=0
+
+[100D]
+ParameterName=Life Time Factor
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=3
+PDOMapping=0
+
+[1016]
+SubNumber=2
+ParameterName=Consumer Heartbeat Time
+ObjectType=0x08
+
+[1016sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x1
+PDOMapping=0
+
+[1016sub1]
+ParameterName=Consumer Heartbeat Time
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=0x0
+PDOMapping=0
+
+[1018]
+SubNumber=4
+ParameterName=Identity Object
+ObjectType=0x09
+
+[1018sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=3
+PDOMapping=0
+LowLimit=0x1
+HighLimit=0x3
+
+[1018sub1]
+ParameterName=Vendor Id
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=801
+PDOMapping=0
+
+[1018sub2]
+ParameterName=Product Code
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=1002
+PDOMapping=0
+
+[1018sub3]
+ParameterName=Revision Number
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=1
+PDOMapping=0
+
+[1200]
+SubNumber=3
+ParameterName=ServerSdoParameter
+ObjectType=0x09
+
+[1200sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x2
+PDOMapping=0
+LowLimit=0x2
+HighLimit=0x2
+
+[1200sub1]
+ParameterName=COB-ID Client->Server
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NodeId+0x600
+PDOMapping=0
+
+[1200sub2]
+ParameterName=COB-ID Server->Client
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NodeId+0x580
+PDOMapping=0
+
+[1400]
+SubNumber=3
+ParameterName=RPDO communication parameter
+ObjectType=0x09
+
+[1400sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x2
+PDOMapping=0
+LowLimit=0x02
+HighLimit=0x05
+
+[1400sub1]
+ParameterName=COB-ID used by RPDO
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=$NODEID+0x200
+PDOMapping=0
+LowLimit=0x00000080
+HighLimit=0xFFFFFFFF
+
+[1400sub2]
+ParameterName=Transmission type
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0xFF
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[1600]
+SubNumber=3
+ParameterName=RPDO mapping parameter
+ObjectType=0x09
+
+[1600sub0]
+ParameterName=Number of mapped application objects in PDO
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x02
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[1600sub1]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x30000108
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1600sub2]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x30010108
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1800]
+SubNumber=6
+ParameterName=TPDO communication parameter
+ObjectType=0x09
+
+[1800sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x5
+PDOMapping=0
+LowLimit=0x02
+HighLimit=0x06
+
+[1800sub1]
+ParameterName=COB-ID used by TPDO
+ObjectType=0x07
+DataType=0x0007
+AccessType=rw
+DefaultValue=$NODEID+0x180
+PDOMapping=0
+LowLimit=0x00000080
+HighLimit=0xFFFFFFFF
+
+[1800sub2]
+ParameterName=Transmission type
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0xFF
+PDOMapping=0
+LowLimit=0x00
+HighLimit=0xFF
+
+[1800sub3]
+ParameterName=Inhibit time
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x0
+PDOMapping=0
+
+[1800sub4]
+ParameterName=compatibility entry
+ObjectType=0x07
+DataType=0x0005
+AccessType=rw
+DefaultValue=0x0
+PDOMapping=0
+
+[1800sub5]
+ParameterName=Event timer
+ObjectType=0x07
+DataType=0x0006
+AccessType=rw
+DefaultValue=0x0
+PDOMapping=0
+
+[1A00]
+SubNumber=3
+ParameterName=TPDO mapping parameter
+ObjectType=0x09
+
+[1A00sub0]
+ParameterName=Number of mapped application objects in TPDO
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x02
+PDOMapping=0
+LowLimit=0
+HighLimit=8
+
+[1A00sub1]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x38000108
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1A00sub2]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x38010108
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[3000]
+SubNumber=2
+ParameterName=Leds Button
+ObjectType=0x08
+
+[3000sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x01
+PDOMapping=0
+
+[3000sub1]
+ParameterName=Leds Button
+ObjectType=0x07
+DataType=0x0005
+AccessType=rww
+PDOMapping=1
+
+[3001]
+SubNumber=2
+ParameterName=Leds Switch
+ObjectType=0x08
+
+[3001sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x1
+PDOMapping=0
+
+[3001sub1]
+ParameterName=Leds Switch
+ObjectType=0x07
+DataType=0x0005
+AccessType=rww
+PDOMapping=1
+
+[3800]
+SubNumber=2
+ParameterName=Digital Inputs Button
+ObjectType=0x08
+
+[3800sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x01
+PDOMapping=0
+
+[3800sub1]
+ParameterName=Digital Inputs Button
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+PDOMapping=1
+
+[3801]
+SubNumber=2
+ParameterName=Digital Inputs Switch
+ObjectType=0x08
+
+[3801sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x1
+PDOMapping=0
+
+[3801sub1]
+ParameterName=Digital Inputs Switch
+ObjectType=0x07
+DataType=0x0005
+AccessType=ro
+PDOMapping=1
+
+[5800]
+SubNumber=3
+ParameterName=Status Information
+ObjectType=0x08
+
+[5800sub0]
+ParameterName=Number of Entries
+ObjectType=0x07
+DataType=0x0005
+AccessType=const
+DefaultValue=0x2
+PDOMapping=0
+
+[5800sub1]
+ParameterName=Refresh Time
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+
+[5800sub2]
+ParameterName=Loop Time
+ObjectType=0x07
+DataType=0x0007
+AccessType=ro
+PDOMapping=0
+

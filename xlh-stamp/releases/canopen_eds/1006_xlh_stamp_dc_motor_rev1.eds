@@ -2,24 +2,24 @@
 Lines=0
 
 [FileInfo]
-FileName=xLH_digital_switch_button_led.eds
+FileName=1006_xlh_stamp_dc_motor_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
-Description=xLH_digital_switch_button_led
-CreationTime=03:51PM
-CreationDate=09-25-2025
+Description=xlh_dc_motor
+CreationTime=05:42PM
+CreationDate=01-12-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=03:51PM
-ModificationDate=09-25-2025
+ModificationTime=05:42PM
+ModificationDate=01-12-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
 VendorName=xemax ag
 VendorNumber=0x0321
-ProductName=xLH_digital_switch_button_led
-ProductNumber=0x03EA
-RevisionNumber=0x0004
+ProductName=xlh_dc_motor
+ProductNumber=0x03EE
+RevisionNumber=0x0001
 OrderCode=0
 BaudRate_10=1
 BaudRate_20=1
@@ -68,12 +68,11 @@ SupportedObjects=11
 11=0x1A00
 
 [ManufacturerObjects]
-SupportedObjects=5
+SupportedObjects=4
 1=0x3000
-2=0x3001
-3=0x3800
-4=0x3801
-5=0x5800
+2=0x3800
+3=0x3801
+4=0x5800
 
 [1000]
 ParameterName=Device Type
@@ -206,7 +205,7 @@ ParameterName=Product Code
 ObjectType=0x07
 DataType=0x0007
 AccessType=ro
-DefaultValue=1002
+DefaultValue=1006
 PDOMapping=0
 
 [1018sub3]
@@ -214,7 +213,7 @@ ParameterName=Revision Number
 ObjectType=0x07
 DataType=0x0007
 AccessType=ro
-DefaultValue=4
+DefaultValue=1
 PDOMapping=0
 
 [1200]
@@ -313,7 +312,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x30010108
+DefaultValue=0x30000210
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -378,7 +377,7 @@ DefaultValue=0x0
 PDOMapping=0
 
 [1A00]
-SubNumber=3
+SubNumber=4
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -387,7 +386,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x02
+DefaultValue=0x03
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -397,7 +396,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38000108
+DefaultValue=0x38000120
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -407,14 +406,24 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38010108
+DefaultValue=0x38000210
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1A00sub3]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x38010110
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
 
 [3000]
-SubNumber=2
-ParameterName=Leds Button
+SubNumber=3
+ParameterName=Motor
 ObjectType=0x08
 
 [3000sub0]
@@ -422,39 +431,26 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x01
+DefaultValue=0x2
 PDOMapping=0
 
 [3000sub1]
-ParameterName=Leds Button
+ParameterName=Control
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
-[3001]
-SubNumber=2
-ParameterName=Leds Switch
-ObjectType=0x08
-
-[3001sub0]
-ParameterName=Number of Entries
+[3000sub2]
+ParameterName=PWM Duty Cycle
 ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x1
-PDOMapping=0
-
-[3001sub1]
-ParameterName=Leds Switch
-ObjectType=0x07
-DataType=0x0005
+DataType=0x0006
 AccessType=rww
 PDOMapping=1
 
 [3800]
-SubNumber=2
-ParameterName=Digital Inputs Button
+SubNumber=3
+ParameterName=Encoder
 ObjectType=0x08
 
 [3800sub0]
@@ -462,19 +458,26 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x01
+DefaultValue=0x2
 PDOMapping=0
 
 [3800sub1]
-ParameterName=Digital Inputs Button
+ParameterName=Position
 ObjectType=0x07
-DataType=0x0005
+DataType=0x0004
+AccessType=ro
+PDOMapping=1
+
+[3800sub2]
+ParameterName=dt per Increment
+ObjectType=0x07
+DataType=0x0003
 AccessType=ro
 PDOMapping=1
 
 [3801]
 SubNumber=2
-ParameterName=Digital Inputs Switch
+ParameterName=Current
 ObjectType=0x08
 
 [3801sub0]
@@ -486,9 +489,9 @@ DefaultValue=0x1
 PDOMapping=0
 
 [3801sub1]
-ParameterName=Digital Inputs Switch
+ParameterName=Current
 ObjectType=0x07
-DataType=0x0005
+DataType=0x0006
 AccessType=ro
 PDOMapping=1
 

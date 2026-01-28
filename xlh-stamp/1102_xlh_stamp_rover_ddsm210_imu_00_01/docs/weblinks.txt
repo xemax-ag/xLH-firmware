@@ -7,8 +7,6 @@ https://www.waveshare.com/wiki/DDSM_Driver_HAT_(A)
 https://www.waveshare.com/ddsm-driver-hat-a.htm
 https://files.waveshare.com/wiki/DDSM-Driver-HAT-(A)/DDSM_Driver_HAT_(A)_Sch.pdf
 https://github.com/waveshareteam/ddsm_example/tree/main/ddsm_ctrl
-
-
 https://www.waveshare.com/ddsm210.htm
 https://www.waveshare.com/wiki/DDSM210
 

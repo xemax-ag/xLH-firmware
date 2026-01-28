@@ -79,7 +79,7 @@ void DDSM210::loop(void)
     this->diPosition = this->diDdsm210Position + this->diDdsm210Mileage * 32768;
 
   this->diDdsm210PositionOld = this->diDdsm210Position;
-  can_open.out.diPosition = this->diPosition;
+  can_open.out.diPosition = 0;// this->diPosition;
 
   can_open.out.debug_1 = int16_t(dc.mileage);
   can_open.out.debug_2 = int16_t(dc.ddsm_pos);

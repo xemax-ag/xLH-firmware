@@ -11,7 +11,7 @@
 #define REPORT_INTVERVALL_US 5000
 Adafruit_BNO08x bno08x(-1);
 sh2_SensorValue_t sensorValue;
-struct_message_txd outgoingWritings;
+//struct_message_txd outgoingWritings;
 euler_t ypr;
 uint8_t read_sensor;
 
@@ -64,9 +64,9 @@ void IMU::read_bn085(void)
         &ypr);
     }
 
-    outgoingWritings.yaw = (int32_t)(ypr.yaw * 1000000.0);
-    outgoingWritings.pitch = (int32_t)(ypr.pitch * 1000000.0);
-    outgoingWritings.roll = (int32_t)(ypr.roll * 1000000.0);
+    //outgoingWritings.yaw = (int32_t)(ypr.yaw * 1000000.0);
+    //outgoingWritings.pitch = (int32_t)(ypr.pitch * 1000000.0);
+    //outgoingWritings.roll = (int32_t)(ypr.roll * 1000000.0);
     //outgoingWritings.cycleTime = (int32_t)(micros() - micros_start);
 
     //Serial.printf("%d #y %0.2f # p %0.2f # r %0.2f # dt %d\r\n", millis(), ypr.yaw, ypr.pitch, ypr.roll, outgoingWritings.cycleTime);
@@ -84,7 +84,7 @@ void IMU::loop(void)
     can_open.out.fYaw = ypr.yaw;
     can_open.out.fPitch = ypr.pitch;
     can_open.out.fRoll = ypr.roll;
-    can_open.out.iYaw = (int16_t)(ypr.yaw * 100.0);
+    can_open.out.iYaw = (int16_t)(ypr.yaw * 100.0);// Optimierung 
     can_open.out.iPitch = (int16_t)(ypr.pitch * 100.0);
     can_open.out.iRoll = (int16_t)(ypr.roll * 100.0);
 }

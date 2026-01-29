@@ -143,6 +143,11 @@ void loop_encoder(void *pvParameters)
             }
             encoder_value_old = can_open.out.diPosition;
         }
+        if (abs(can_open.in.uiDutyCycle) <= 13000)
+        {
+            can_open.out.iSpeed = 0;
+        }
+
         can_open.out.diPosition = encoder_value;
         delay(1);
     }

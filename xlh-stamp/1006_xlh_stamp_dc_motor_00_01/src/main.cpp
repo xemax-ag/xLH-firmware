@@ -129,7 +129,7 @@ void loop_encoder(void *pvParameters)
     {
         encoder_value = encoder.getEncoderValue();
         micros_ = micros();
-        if (((can_open.out.diPosition - encoder_value_old) >= 40) || ((can_open.out.diPosition - encoder_value_old) <= 10))
+        if (((can_open.out.diPosition - encoder_value_old) >= 40) || ((can_open.out.diPosition - encoder_value_old) <= 0))
         {
             dt = int32_t(micros_ - micros_old);
             micros_old = micros_;

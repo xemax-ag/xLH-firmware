@@ -1,0 +1,14 @@
+[project]
+name = "oled"
+version = "0.9.0"
+description = ""
+authors = [
+    { name = "Pascal Helfenstein", email = "pascal.helfenstein@xemax.ch" },
+]
+requires-python = "==3.13.5"
+readme = "README.md"
+dependencies = [
+    "luma-oled>=3.14.0",
+    "netifaces>=0.11.0",
+    "psutil>=7.1.0",
+]

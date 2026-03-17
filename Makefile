@@ -2,7 +2,7 @@ help:
 	# done
 
 venv_build:
-	rm -rf .venv && rm -rf uv.lock && uv sync
+	rm -rf .venv && rm -rf uv.lock && uv sync --upgrade
 
 venv_update:
 	uv lock --upgrade && uv sync

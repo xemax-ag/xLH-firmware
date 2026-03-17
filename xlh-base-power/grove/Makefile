@@ -36,6 +36,9 @@ log:
 log_all:
 	journalctl -f
 
+ssh_dev: ssh_upload
+	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/grove restart"
+
 ssh_upload:
 	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
 		--exclude .venv \

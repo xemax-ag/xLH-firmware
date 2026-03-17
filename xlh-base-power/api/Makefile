@@ -1,0 +1,56 @@
+SERVICE=xlh_api.service
+SERVICE_SM=xlh_rgb_shared_memory.service
+
+build:
+	sudo rm -rf .venv && sudo rm -rf uv.lock && uv sync --upgrade
+
+update:
+	uv lock --upgrade && uv sync
+
+status:
+	sudo systemctl status ${SERVICE}
+
+start:
+	sudo systemctl start ${SERVICE}
+
+stop:
+	sudo systemctl stop ${SERVICE}
+
+restart:
+	sudo systemctl restart ${SERVICE}
+
+enable:
+	sudo systemctl enable ${SERVICE}
+
+disable:
+	sudo systemctl disable ${SERVICE}
+
+status_sm:
+	sudo systemctl status ${SERVICE_SM}
+
+start_sm:
+	sudo systemctl start ${SERVICE_SM}
+
+stop_sm:
+	sudo systemctl stop ${SERVICE_SM}
+
+restart_sm:
+	sudo systemctl restart ${SERVICE_SM}
+
+enable_sm:
+	sudo systemctl enable ${SERVICE_SM}
+
+disable_sm:
+	sudo systemctl disable ${SERVICE_SM}
+
+reload:
+	sudo systemctl daemon-reload
+
+log:
+	journalctl -xeu ${SERVICE} -f
+
+log_sm:
+	journalctl -xeu ${SERVICE_SM} -f
+
+log_all:
+	journalctl -f

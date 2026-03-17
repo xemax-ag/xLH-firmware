@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="ms-3 me-3 mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">
+                    <i class="bi bi-book me-2"></i>
+                    <a  class="link-offset-2 link-underline link-underline-opacity-25"
+                        href="https://xlh.xemax.ch/" target="_blank">xLH documentation</a></li>
+                <li class="list-group-item list-group-item-action">
+                    <i class="bi bi-display me-2"></i>
+                    <a class="link-offset-2 link-underline link-underline-opacity-25" href="/plc/" target="_blank">
+                        CODESYS web visualization </a></li>
+                <li class="list-group-item list-group-item-action">
+                    <i class="bi bi-github me-2"></i>
+                    <a class="link-offset-2 link-underline link-underline-opacity-25"
+                       href="https://github.com/xemax-ag/xLH/" target="_blank">GitHub xLH</a>
+                </li>
+                <li class="list-group-item list-group-item-action">
+                    <i class="bi bi-filetype-py me-2"></i>
+                    <a class="link-offset-2 link-underline link-underline-opacity-25" href="/jupyterlite/"
+                        target="_blank">Jupyterlite Python WASM environment</a><br>
+                    <a class="link-offset-2 link-underline link-underline-opacity-25 ms-5"
+                       href="/jupyterlite/lab/?fromURL=https://raw.githubusercontent.com/xemax-ag/xLH/refs/heads/main/source/jupyterlite/rgb_examples.ipynb"
+                       target="_blank">Jupyterlite example: rgb_examples.ipynb</a><br>
+                    <a  class="link-offset-2 link-underline link-underline-opacity-25 ms-5"
+                        href="/jupyterlite/lab/?fromURL=https://raw.githubusercontent.com/xemax-ag/xLH/refs/heads/main/source/jupyterlite/rgb_examples.ipynb"
+                        target="_blank">Jupyterlite example: rgb_examples.ipynb</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

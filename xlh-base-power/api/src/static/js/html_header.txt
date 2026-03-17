@@ -1,0 +1,36 @@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    <!-- HTMX -->
+    <!-- https://www.jsdelivr.com/package/npm/htmx.org -->
+    <script src="/static/js/htmx.1.9.12.min.js" crossorigin="anonymous"></script>
+    <!-- https://unpkg.com/htmx.org/dist/ext/json-enc.js -->
+    <script src="/static/js/htmx_json_enc.js" crossorigin="anonymous"></script>
+
+    <!-- Alpine js -->
+    <!-- https://www.jsdelivr.com/package/npm/htmx-ext-alpine-morph -->
+    <script src="https://cdn.jsdelivr.net/npm/htmx-ext-alpine-morph@2.0.0/alpine-morph.min.js"></script>
+    <!-- https://www.jsdelivr.com/package/npm/@alpinejs/persist -->
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.14.8/dist/cdn.min.js"
+            integrity="sha256-jFBwr6faTqqhp3sVi4/VTxJ0FpaF9YGZN1ZGLl/5QYM="
+            crossorigin="anonymous"></script>
+    <!-- https://www.jsdelivr.com/package/npm/alpinejs -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
+            integrity="sha256-tgDjY9mdlURNtUrL+y3v/smueSqpmgkim82geOW1VkM="
+            crossorigin="anonymous"
+            defer></script>

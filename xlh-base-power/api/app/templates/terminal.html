@@ -1,0 +1,53 @@
+{% extends "_layout/default.html" %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+<li class="breadcrumb-item active"><span>Terminal</span></li>
+{% endblock %}
+
+{% block view %}
+<h1 class="mb-4">Terminal</h1>
+<div class="col-md-12 mt-4">
+    <!--        <iframe class="col-md-12" style="height: 65vh;" src="/shell/" title="Terminal"></iframe>-->
+    <iframe class="col-md-12 mb-4" style="height: 600px;" src="/shell/" title="Terminal"></iframe>
+    <h2 class="mb-4">The most important commands</h2>
+    <table class="table mb-4">
+        <thead>
+        <tr>
+            <th class="w-25" scope="col">Command</th>
+            <th class="w-75" scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>make config</td>
+            <td>
+                Calling up the configuration environment (WiFi, localication, ...). Navigation is done using the arrow
+                keys, tab key and return key.
+            </td>
+        </tr>
+        <tr>
+            <td>make netconfig</td>
+            <td>
+                Calling up the network configuration.Navigation is done using the arrow
+                keys, tab key and return key.
+            </td>
+        </tr>
+        <tr>
+            <td>make reboot</td>
+            <td>Restarting the computer</td>
+        </tr>
+        <tr>
+            <td>make shutdown</td>
+            <td>Turning off the computer</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="mb-4">
+        The xLH computers are based on a Linux Debian operating system. Further information can be found in the official
+        <a href="https://www.debian.org/doc/manuals/debian-reference/" target="_blank">documentation</a>.
+    </p>
+</div>
+
+{% endblock %}
+

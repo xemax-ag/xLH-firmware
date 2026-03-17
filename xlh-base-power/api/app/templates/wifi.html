@@ -1,0 +1,100 @@
+{% extends "_layout/default.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active"><span>WiFi</span></li>
+{% endblock %}
+
+{% block view %}
+    <h1 class="mb-4">WiFi</h1>
+
+    <div class="row justify-content-start">
+        <div class="col-md-6 col-lg-4">
+            <form>
+                <div class="mb-3">
+                    <label for="ssid" class="form-label">SSID</label><br>
+                    <input type="text" class="form-control" id="ssid" name="ssid" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="psk" class="form-label">Password</label><br>
+                    <input type="password" class="form-control" id="psk" name="psk" value="">
+                </div>
+                <button class="btn btn-primary"
+                        hx-post="/wifi-config/"
+                        hx-target="#wifi-query-data" hx-swap="innerHTML"
+                        hx-indicator="#spinner">
+                    Submit WiFi Login
+                </button>
+            </form>
+            <p id="wifi-query-data"></p>
+        </div>
+    </div>
+
+    <h2 class="mb-4">Country Code</h2>
+
+    {#    <button type="button" class="btn btn-secondary" data-coreui-container="body" data-coreui-toggle="popover"#}
+    {#            data-coreui-placement="top" data-coreui-content="Top popover">#}
+    {#        Popover on top#}
+    {#    <button class="btn btn-primary me-3"#}
+    {#                hx-get="/wifi-country-code/ch"#}
+    {#                hx-target="#wifi-country-code-query-data" hx-swap="innerHTML"#}
+    {#                hx-indicator="#spinner">CH#}
+    {#        </button>#}
+    {#    </button>#}
+    {##}
+    {#    <script defer>#}
+    {##}
+    {##}
+    {#        document.addEventListener('DOMContentLoaded', () => {#}
+    {#            const popoverTriggerList = document.querySelectorAll('[data-coreui-toggle="popover"]')#}
+    {#            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new coreui.Popover(popoverTriggerEl))#}
+    {#        });#}
+    {#    </script>#}
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#modal_country_code">
+        Set WiFi country code
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_country_code" data-coreui-backdrop="static" data-coreui-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" x-data="{ country_code: '' }">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Set WiFi Country Code</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container d-flex justify-content-start flex-wrap ps-0 ms-0 mb-3">
+                        <button class="btn btn-primary me-3" @click="country_code = 'CH'">CH</button>
+                        <button class="btn btn-primary me-3" @click="country_code = 'DE'">DE</button>
+                        <button class="btn btn-primary me-3" @click="country_code = 'AT'">AT</button>
+                        <button class="btn btn-primary me-3" @click="country_code = 'FR'">FR</button>
+                        <button class="btn btn-primary" @click="country_code = 'IT'">IT</button>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <input id="input_country_code" type="text" class="form-control" x-model="country_code" placeholder="country code">
+                    </div>
+                    <p>After successfully setting the country code, the controller will automatically restart.</p>
+                    <p id="wifi-country-code-query-data"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                            hx-ext="json-enc"
+                            hx-indicator="#spinner"
+                            hx-target="#wifi-country-code-query-data" hx-swap="innerHTML"
+                            hx-post="/wifi-country-code/"
+                            hx-vals='js:{
+                                        "country_code": document.getElementById("input_country_code").value,
+                                        }'>
+                        Submit Country Code
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

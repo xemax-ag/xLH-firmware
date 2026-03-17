@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://xemax.ch/" target="_blank">
+        <img src="/static/img/favicons/favicon.ico" class="mb-1 me-2" style="height: 1.0em" alt="">
+            xemax
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {{ active(nav_page, 'index') }}" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ active(nav_page, 'wifi') }}" href="/wifi">WiFi</a>
+                </li>
+                <li class="nav-item {{ active(nav_page, 'docs') }}">
+                    <a class="nav-link" href="/docs">Docs</a>
+                </li>
+            </ul>
+
+            {# https://github.com/n3r4zzurr0/svg-spinners?tab=readme-ov-file #}
+            <img id="spinner" class="htmx-indicator me-2"
+                 src="/static/img/spinners/bars-scale-middle.svg" alt="">
+
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle btn ms-2" type="button" id="bd-theme"
+                        data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                    <i class="bi bi-sun-fill theme-icon-active"></i>
+                    <i class="bi bi-moon-fill theme-icon-active"></i>
+                    <i class="bi bi-circle-half theme-icon-active"></i>
+                    <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+                    <li>
+                        <button type="button" class="dropdown-item" data-bs-theme-value="light">
+                            <i class="bi bi-sun theme-icon me-2"></i>
+                            <i class="bi bi-sun-fill theme-icon-active me-2"></i>
+                            Light
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item" data-bs-theme-value="dark">
+                            <i class="bi bi-moon theme-icon me-2"></i>
+                            <i class="bi bi-moon-fill theme-icon-active me-2"></i>
+                            Dark
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+

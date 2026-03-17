@@ -1,0 +1,22 @@
+[project]
+name = "api"
+version = "0.9.0"
+description = ""
+authors = [
+    { name = "Pascal Helfenstein", email = "pascal.helfenstein@xemax.ch" },
+]
+requires-python = "==3.13.5"
+readme = "README.md"
+dependencies = [
+    "fastapi>=0.117.1",
+    "jinja2>=3.1.6",
+    "python-multipart>=0.0.20",
+    "uvicorn>=0.37.0",
+    "rpi-ws281x>=5.0.0",
+    "python-dotenv>=1.1.1",
+    "pydantic-settings>=2.11.0",
+]
+
+[tool.uv]
+package = false
+

@@ -1,3 +1,6 @@
+HOST=192.168.1.31
+USER=xlh
+PASSWORD=xlh
 SERVICE=xlh_api.service
 SERVICE_SM=xlh_rgb_shared_memory.service
 
@@ -54,3 +57,16 @@ log_sm:
 
 log_all:
 	journalctl -f
+
+ssh_dev: ssh_upload
+	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/api restart"
+	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/api restart_sm"
+
+ssh_upload:
+	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
+		--exclude .venv \
+		--exclude .idea \
+		--exclude uv.lock \
+		--exclude .python-version \
+		--exclude pyproject.toml \
+		./ ${USER}@${HOST}:xemax/api

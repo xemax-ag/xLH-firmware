@@ -47,4 +47,5 @@ ssh_upload:
 		--exclude misc \
 		--exclude uv.lock \
 		--exclude .python-version \
+		--exclude pyproject.toml \
 		./ ${USER}@${HOST}:xemax/oled

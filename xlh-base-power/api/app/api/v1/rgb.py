@@ -19,7 +19,7 @@ async def rgb_values(rgb_matrix: RgbMatrixValues):
             if rgb_state == eRgbRemoteState.API:
                 response['msg'] = 'ok'
             elif rgb_state == eRgbRemoteState.CODESYS:
-                response['msg'] = 'info codesys is rgb-writer'
+                response['msg'] = 'codesys is rgb-writer'
             else:
                 response['msg'] = 'error'
         else:
@@ -39,10 +39,11 @@ async def rgb_wipe(r: int = 0, g: int = 0, b: int = 0):
     rgb_pixel.b = b
 
     rgb_state = rgb_cmd_wipe(rgb_pixel)
+    response = {'msg': 'none'}
     if rgb_state == eRgbRemoteState.API:
-        response = {'msg': 'ok'}
+        response['msg'] = 'ok'
     elif rgb_state == eRgbRemoteState.CODESYS:
-        response = {'msg': 'info codesys is rgb-writer'}
+        response['msg'] = 'codesys is rgb-writer'
     else:
-        response = {'msg': 'error'}
+        response['msg'] = 'error'
     return response

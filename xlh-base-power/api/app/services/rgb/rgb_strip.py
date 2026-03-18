@@ -1,13 +1,17 @@
 from typing import List
 from pydantic import BaseModel
-from app.services.rgb.rgb_shared_memory import RgbSharedMemory
+from src.rgb_shared_memory import RgbSharedMemory
 from multiprocessing import shared_memory
-from enum import Enum
+from enum import IntEnum
 
 LED_COUNT = 64        # Number of LED pixels.
 VALUE_LIMIT = 50
 
-class eRgbRemoteState(Enum):
+class eRgbHw(IntEnum):
+    RGB_PCB_BLACK = 1
+    RGB_PCB_RED = 2
+
+class eRgbRemoteState(IntEnum):
     CODESYS = 1
     API = 2
     ERROR = 3
@@ -28,10 +32,8 @@ class RgbPixel(BaseModel):
     }
 
 class RgbMatrixValues(BaseModel):
-    # cmd: str = 'pixel'
-    # response: str = ''
-    # value: RgbPixel | None = None
     values: List[List[RgbPixel]]
+    # rgb_hw: int = eRgbHw.RGB_PCB_BLACK.value
 
     model_config = {
         'json_schema_extra': {

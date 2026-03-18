@@ -2,7 +2,6 @@ from multiprocessing import shared_memory
 import time
 from rpi_ws281x import PixelStrip, Color, ws
 from typing import List
-from pydantic import BaseModel
 import pathlib
 import sys
 
@@ -28,8 +27,8 @@ def rgb_cmd_pixel(strip: PixelStrip, values: List):
         for i in range(strip.numPixels()):
             j = int(i % 8)
             idx = (strip.numPixels() - i - 1) * 3
-            # idx = i * 3
             strip.setPixelColor(i, Color(values[idx+0], values[idx+1], values[idx+2]))
+            # strip.setPixelColor(i, Color(10, 10, 10))
         strip.show()
 
 
@@ -110,7 +109,7 @@ if __name__ == '__main__':
     _values_codesys = []
     _values_api = []
     while True:
-        time.sleep(0.05)
+        time.sleep(0.1)
         try:
             _start_time = time.perf_counter()
 
@@ -133,27 +132,3 @@ if __name__ == '__main__':
         except Exception as e:
             print(e)
             pass
-
-
-
-
-"""
-def sharedMemoryWrite(memName, memString, memSize, memTime):
-    # Create new shared memory object
-    shm = shared_memory.SharedMemory(name=memName, create=False, size=memSize)
-    # Encode string in utf-8
-    encoded = memString.encode('utf-8')
-    # Convert string to bytearray
-    bArr = bytearray(encoded)
-    # Write every single element in shared memory buffer
-    if len(bArr) < memSize:
-        for i in range(len(bArr)):
-            shm.buf[i] = bArr[i]
-    # Delay to read the memory in other application, before close
-    #time.sleep(memTime)
-    shm.close()
-
-%%time
-s = str(datetime.datetime.now())
-sharedMemoryWrite(memName='Shared_Memory_RGB_Codesys', memString=s, memSize=memSize, memTime=0.5)
-"""

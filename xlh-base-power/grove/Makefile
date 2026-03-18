@@ -46,4 +46,6 @@ ssh_upload:
 		--exclude codesys \
 		--exclude misc \
 		--exclude uv.lock \
+		--exclude .python-version \
+		--exclude pyproject.toml \
 		./ ${USER}@${HOST}:xemax/grove

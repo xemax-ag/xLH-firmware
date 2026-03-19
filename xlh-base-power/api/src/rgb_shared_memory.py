@@ -109,7 +109,7 @@ if __name__ == '__main__':
     _values_codesys = []
     _values_api = []
     while True:
-        time.sleep(0.1)
+        time.sleep(0.05)
         try:
             _start_time = time.perf_counter()
 

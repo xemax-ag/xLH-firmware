@@ -36,6 +36,9 @@ log:
 log_all:
 	journalctl -f
 
+ssh_remove:
+	ssh-keygen -f "/home/phe/.ssh/known_hosts" -R "192.168.1.31"
+
 ssh_dev: ssh_upload
 	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/oled restart"
 

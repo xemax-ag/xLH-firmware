@@ -45,7 +45,10 @@ while(True):
             if restart:
                 out = subprocess.check_output(['sudo', 'systemctl', 'restart', 'codesyscontrol', '&'])
                 logging.info('xLH restart')
-        line_1 = f'xLH {td_to_hhmmss(restart_time - (current_time - current_time_old))}'
+        if restart:
+            line_1 = f'xLH {td_to_hhmmss(restart_time - (current_time - current_time_old))}'
+        else:
+            line_1 = f'xLH'
     except:
         line_1 = 'xLH'
 

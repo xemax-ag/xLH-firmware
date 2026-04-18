@@ -4,7 +4,7 @@ PASSWORD=xlh
 SERVICE=xlh_api.service
 SERVICE_SM=xlh_rgb_shared_memory.service
 
-build:
+build_app:
 	sudo rm -rf .venv && sudo rm -rf uv.lock && uv sync --upgrade
 	sudo systemctl restart ${SERVICE}
 	sudo systemctl restart ${SERVICE_SM}
@@ -13,6 +13,21 @@ update:
 	uv lock --upgrade && uv sync
 	sudo systemctl restart ${SERVICE}
 	sudo systemctl restart ${SERVICE_SM}
+
+backend_dev:
+	bash maind_dev.sh
+
+dev:
+	npm run dev
+
+build:
+	npm run build
+
+preview:
+	npm run preview
+
+npm_install:
+	npm install
 
 status:
 	sudo systemctl status ${SERVICE}
@@ -65,7 +80,7 @@ log_all:
 ssh_remove:
 	ssh-keygen -f "/home/phe/.ssh/known_hosts" -R "${HOST}"
 
-ssh_dev: ssh_upload
+ssh_dev: build ssh_upload
 	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/api restart"
 	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/api restart_sm"
 
@@ -74,6 +89,15 @@ ssh_upload:
 		--exclude .venv \
 		--exclude .claude \
 		--exclude .idea \
+		--exclude node_modules \
+		--exclude src \
 		--exclude .python-version \
+		--exclude components.json \
+		--exclude eslint.config.js \
+		--exclude package.json \
+		--exclude package-lock.json \
+		--exclude tsconfig.app.json \
+		--exclude tsconfig.json \
+		--exclude tsconfig.node.json \
 		--exclude uv.lock \
 		./ ${USER}@${HOST}:xemax/api

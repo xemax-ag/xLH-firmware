@@ -8,7 +8,6 @@ import time
 import logging
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from app.api.html.html import router as html_router
 from app.api.v1.rgb import router as rgb_router
 from fastapi.staticfiles import StaticFiles
 from app.core.toolbox.logging_app import setup_logging
@@ -43,7 +42,7 @@ app = FastAPI(
 
 app.include_router(docs_api_dark, include_in_schema=False)
 
-app.include_router(router=html_router, prefix='', tags=['html'], include_in_schema=False)
+# app.include_router(router=html_router, prefix='', tags=['html'], include_in_schema=False)
 
 if get_xlh_type() == XlhType.BASE:
     app.include_router(router=rgb_router, prefix='/v1/rgb', tags=['v1 rgb'], include_in_schema=True)
@@ -51,6 +50,21 @@ if get_xlh_type() == XlhType.BASE:
 # =====================================================================================================================
 
 app.mount(f'/static', StaticFiles(directory='app/static', html=True), name='static')
+
+# =====================================================================================================================
+
+class SPAStaticFiles(StaticFiles):
+    async def get_response(self, path: str, scope):
+        if path.startswith(("docs", "v1/", "static/")) or path in ("docs", "v1"):
+            raise StarletteHTTPException(status_code=404)
+        try:
+            return await super().get_response(path, scope)
+        except StarletteHTTPException as exc:
+            if exc.status_code == 404:
+                return await super().get_response("index.html", scope)
+            raise
+
+app.mount("/", SPAStaticFiles(directory="dist", html=True), name="spa")
 
 # =====================================================================================================================
 
@@ -66,14 +80,6 @@ async def add_process_time_header_http(request: Request, call_next):
     process_time = time.perf_counter() - start_time
     response.headers['x-process-time'] = f'{process_time*1000.0:0.03f} ms'
     return response
-
-# @app.middleware('https')
-# async def add_process_time_header_https(request: Request, call_next):
-#     start_time = time.perf_counter()
-#     response = await call_next(request)
-#     process_time = time.perf_counter() - start_time
-#     response.headers['x-process-time'] = f'{process_time*1000.0:0.03f} ms'
-#     return response
 
 # =====================================================================================================================
 

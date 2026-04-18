@@ -5,10 +5,12 @@ dotenv_path = Path(__file__).resolve().parents[1] / '.env'
 load_dotenv(dotenv_path=dotenv_path)
 
 class Config(BaseSettings):
-    app_name: str = 'xLH xemax ag'
+    app_name: str = ''
     app_version: str = ''
     app_description: str = '''<a href='/' target='_blank'>xLH</a>'''
     debug: bool = False
+
+    
 
 config = Config()
 

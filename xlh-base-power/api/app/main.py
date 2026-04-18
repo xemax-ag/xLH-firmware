@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from app.core.config import config
+from app.core.toolbox.xlh_type_cpu_info import get_xlh_type, XlhType
 from fastapi import FastAPI, Request, status
 from fastapi.responses import PlainTextResponse, JSONResponse, RedirectResponse
 from contextlib import asynccontextmanager
@@ -12,6 +13,7 @@ from app.api.v1.rgb import router as rgb_router
 from fastapi.staticfiles import StaticFiles
 from app.core.toolbox.logging_app import setup_logging
 from app.core.templates.base import template_base
+from app.api.html.docs_api_dark import router as docs_api_dark
 
 setup_logging(level=logging.WARNING)
 
@@ -33,14 +35,18 @@ app = FastAPI(
         swagger_ui_parameters={
             'syntaxHighlight': False
         },
-        # docs_url = None,
+        docs_url=None,  # dark-theme
         redirect_slashes=True,
     )
 
 # =====================================================================================================================
 
+app.include_router(docs_api_dark, include_in_schema=False)
+
 app.include_router(router=html_router, prefix='', tags=['html'], include_in_schema=False)
-app.include_router(router=rgb_router, prefix='/v1/rgb', tags=['v1 rgb'], include_in_schema=True)
+
+if get_xlh_type() == XlhType.BASE:
+    app.include_router(router=rgb_router, prefix='/v1/rgb', tags=['v1 rgb'], include_in_schema=True)
 
 # =====================================================================================================================
 

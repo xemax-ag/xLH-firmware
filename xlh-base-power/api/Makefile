@@ -1,4 +1,4 @@
-HOST=192.168.1.31
+HOST=192.168.1.151
 USER=xlh
 PASSWORD=xlh
 SERVICE=xlh_api.service
@@ -6,9 +6,13 @@ SERVICE_SM=xlh_rgb_shared_memory.service
 
 build:
 	sudo rm -rf .venv && sudo rm -rf uv.lock && uv sync --upgrade
+	sudo systemctl restart ${SERVICE}
+	sudo systemctl restart ${SERVICE_SM}
 
 update:
 	uv lock --upgrade && uv sync
+	sudo systemctl restart ${SERVICE}
+	sudo systemctl restart ${SERVICE_SM}
 
 status:
 	sudo systemctl status ${SERVICE}
@@ -59,7 +63,7 @@ log_all:
 	journalctl -f
 
 ssh_remove:
-	ssh-keygen -f "/home/phe/.ssh/known_hosts" -R "192.168.1.31"
+	ssh-keygen -f "/home/phe/.ssh/known_hosts" -R "${HOST}"
 
 ssh_dev: ssh_upload
 	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/api restart"
@@ -68,8 +72,8 @@ ssh_dev: ssh_upload
 ssh_upload:
 	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
 		--exclude .venv \
+		--exclude .claude \
 		--exclude .idea \
-		--exclude uv.lock \
 		--exclude .python-version \
-		--exclude pyproject.toml \
+		--exclude uv.lock \
 		./ ${USER}@${HOST}:xemax/api

@@ -18,6 +18,12 @@ for (const line of envFile.split("\n")) {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  root: path.resolve(__dirname, "src"),
+  publicDir: path.resolve(__dirname, "public"),
+  build: {
+    outDir: path.resolve(__dirname, "dist"),
+    emptyOutDir: true,
+  },
   define: envVars,
   resolve: {
     alias: {

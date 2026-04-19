@@ -14,8 +14,12 @@ update:
 	sudo systemctl restart ${SERVICE}
 	sudo systemctl restart ${SERVICE_SM}
 
+restart_all:
+	sudo systemctl restart ${SERVICE}
+	sudo systemctl restart ${SERVICE_SM}
+
 backend_dev:
-	bash maind_dev.sh
+	bash main_dev.sh
 
 dev:
 	npm run dev
@@ -91,13 +95,16 @@ ssh_upload:
 		--exclude .idea \
 		--exclude node_modules \
 		--exclude src \
-		--exclude .python-version \
-		--exclude components.json \
-		--exclude eslint.config.js \
-		--exclude package.json \
-		--exclude package-lock.json \
-		--exclude tsconfig.app.json \
-		--exclude tsconfig.json \
-		--exclude tsconfig.node.json \
-		--exclude uv.lock \
+		--exclude public \
+		--exclude /components.json \
+		--exclude /eslint.config.js \
+		--exclude /package.json \
+		--exclude /package-lock.json \
+		--exclude /tsconfig.app.json \
+		--exclude /tsconfig.json \
+		--exclude /tsconfig.node.json \
+		--exclude /uv.lock \
+		--exclude /CLAUDE.md \
+		--exclude /README.md \
+		--exclude /vite.config.ts \
 		./ ${USER}@${HOST}:xemax/api

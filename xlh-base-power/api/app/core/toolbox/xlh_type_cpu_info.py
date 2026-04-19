@@ -104,7 +104,7 @@ class XlhType(StrEnum):
 
 @lru_cache
 def get_xlh_type() -> XlhType:
-    if 'Pi Zero' in get_cpu_name().lower():
+    if 'Pi Zero' in get_cpu_name():
         return XlhType.BASE
     elif 'Pi 4' in get_cpu_name():
         return XlhType.BASE

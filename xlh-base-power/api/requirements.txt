@@ -1,8 +1,0 @@
-#python -m venv venv
-#source venv/bin/activate
-
-fastapi
-uvicorn
-rpi_ws281x
-jinja2
-python-multipart

@@ -20,28 +20,9 @@ export function Navigation() {
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-        {/*<NavigationMenuItem>*/}
-        {/*  <NavigationMenuTrigger>Devices</NavigationMenuTrigger>*/}
-        {/*  <NavigationMenuContent>*/}
-        {/*    <ul className="grid w-[220px] gap-1 p-2">*/}
-        {/*      <li>*/}
-        {/*        <NavigationMenuLink href="/devices/rgb">*/}
-        {/*          RGB*/}
-        {/*        </NavigationMenuLink>*/}
-        {/*      </li>*/}
-        {/*      <li>*/}
-        {/*        <NavigationMenuLink href="/devices/sensors">*/}
-        {/*          Sensors*/}
-        {/*        </NavigationMenuLink>*/}
-        {/*      </li>*/}
-        {/*    </ul>*/}
-        {/*  </NavigationMenuContent>*/}
-        {/*</NavigationMenuItem>*/}
-
-
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/visualization"
+            href="/ui-plc"
             className={navigationMenuTriggerStyle()}
           >
             Visualization
@@ -50,7 +31,7 @@ export function Navigation() {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/terminal"
+            href="/ui-terminal"
             className={navigationMenuTriggerStyle()}
           >
             Terminal
@@ -59,7 +40,16 @@ export function Navigation() {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="/docs"
+            href="/ui-jupyterlite"
+            className={navigationMenuTriggerStyle()}
+          >
+            Python
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            href="/ui-docs"
             className={navigationMenuTriggerStyle()}
           >
             Docs

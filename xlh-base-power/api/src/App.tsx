@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import {useEffect} from "react"
 import {
   Route,
   Routes,
@@ -11,6 +11,8 @@ import {Home} from "@/pages/home.tsx"
 import {Terminal} from "@/pages/terminal.tsx"
 import {Help} from "@/pages/help.tsx";
 import {PLCVisualization} from "@/pages/plc_visualization.tsx";
+import {ApiDocs} from "@/pages/api_docs.tsx";
+import {Jupyterlite} from "@/pages/jupyterlite.tsx";
 
 function isEditableTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false
@@ -27,9 +29,19 @@ export function App() {
       if (event.repeat) return
       if (event.metaKey || event.ctrlKey || event.altKey) return
       if (isEditableTarget(event.target)) return
-      if (event.key.toLowerCase() !== "t") return
 
-      const url = `${import.meta.env.TERMINAL_BASE_URL}/shell/`
+      const key = event.key.toLowerCase()
+      const path =
+        key === "s" ? "/shell/" :
+        key === "t" ? "/shell/" :
+        key === "p" ? "/plc/" :
+        key === "v" ? "/plc/" :
+        key === "j" ? "/jupyterlite/lab/" :
+        key === "d" ? "/docs" :
+        null
+      if (!path) return
+
+      const url = `${import.meta.env.API_BASE_URL}${path}`
       const win = window.open(url, "_blank")
       win?.focus()
     }
@@ -46,9 +58,10 @@ export function App() {
           <div className="flex min-w-0 flex-1 flex-col gap-4 text-sm leading-loose">
             <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/visualization" element={<PLCVisualization />}/>
-              <Route path="/terminal" element={<Terminal />}/>
-              {/*<Route path="/do" element={<Home/>}/>*/}
+              <Route path="/ui-plc" element={<PLCVisualization/>}/>
+              <Route path="/ui-terminal" element={<Terminal/>}/>
+              <Route path="/ui-jupyterlite" element={<Jupyterlite/>}/>
+              <Route path="/ui-docs" element={<ApiDocs/>}/>
               <Route path="/help" element={<Help/>}/>
             </Routes>
           </div>

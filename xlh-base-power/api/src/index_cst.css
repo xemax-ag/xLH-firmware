@@ -1,0 +1,8 @@
+@theme {
+    --container-content: 40rem; /* (= 320 × 0.25rem, the same as max-w-320, 1 rem is 4px) */
+    --color-regal-blue: #1bd94d;
+}
+
+/*@utility max-w-content {*/
+/*    max-width: var(--container-content);*/
+/*}*/

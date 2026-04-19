@@ -25,7 +25,7 @@ export function Navigation() {
             href="/ui-plc"
             className={navigationMenuTriggerStyle()}
           >
-            Visualization
+            PLC-Visualization
           </NavigationMenuLink>
         </NavigationMenuItem>
 

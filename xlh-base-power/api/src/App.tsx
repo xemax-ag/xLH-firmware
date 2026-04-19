@@ -32,7 +32,6 @@ export function App() {
 
       const key = event.key.toLowerCase()
       const path =
-        key === "s" ? "/shell/" :
         key === "t" ? "/shell/" :
         key === "p" ? "/plc/" :
         key === "v" ? "/plc/" :

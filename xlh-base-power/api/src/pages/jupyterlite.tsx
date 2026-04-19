@@ -7,6 +7,7 @@ export function Jupyterlite() {
         style={{ minHeight: 750, width: "100%" }}
         src={`${import.meta.env.API_BASE_URL}/jupyterlite/lab/`}
         title="Jupyterlite"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
       />
     </div>
   )

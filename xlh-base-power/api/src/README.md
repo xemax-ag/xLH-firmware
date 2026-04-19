@@ -5,6 +5,9 @@ npx shadcn@latest init --preset b0 --base base --template vite
 Icons
 https://www.shadcn.io/icons/lucide
 
+Them
+Modern Minimal
+
 Shadcn UI Migration Guide: Transitioning from Radix UI to Base UI
 https://shadcnspace.com/docs/getting-started/migrate-to-baseui
 https://github.com/shadcn-ui/ui/discussions/9562

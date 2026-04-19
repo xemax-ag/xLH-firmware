@@ -1,6 +1,7 @@
 @theme {
-    --container-content: 40rem; /* (= 320 × 0.25rem, the same as max-w-320, 1 rem is 4px) */
-    --color-regal-blue: #1bd94d;
+    --container-content: 80rem; /* (= 320 × 0.25rem, the same as max-w-320, 1 rem is 4px) */
+    --color-blue: #0531b6;
+    --color-green: #0a492d;
 }
 
 /*@utility max-w-content {*/

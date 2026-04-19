@@ -1,4 +1,4 @@
-HOST=192.168.1.151
+HOST=192.168.1.168
 USER=xlh
 PASSWORD=xlh
 SERVICE=xlh_api.service
@@ -108,3 +108,6 @@ ssh_upload:
 		--exclude /README.md \
 		--exclude /vite.config.ts \
 		./ ${USER}@${HOST}:xemax/api
+
+generate_api_models:
+	npx openapi-typescript http://${HOST}/openapi.json -o ./src/apis/xlh_api.ts

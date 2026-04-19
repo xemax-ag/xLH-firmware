@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 
 type HomeState = {
-  openAccordionItems: string[]
+  openAccordionItem: string
 }
 
 export const HOME_STORAGE_KEY = "home-state"
@@ -11,14 +11,14 @@ function loadInitialState(): HomeState {
     const raw = localStorage.getItem(HOME_STORAGE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw) as Partial<HomeState>
-      if (Array.isArray(parsed.openAccordionItems)) {
-        return { openAccordionItems: parsed.openAccordionItems }
+      if (typeof parsed.openAccordionItem === "string") {
+        return { openAccordionItem: parsed.openAccordionItem }
       }
     }
   } catch {
     // fall through to default
   }
-  return { openAccordionItems: ["plc"] }
+  return { openAccordionItem: "" }
 }
 
 const initialState: HomeState = loadInitialState()
@@ -27,11 +27,11 @@ const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    setOpenAccordionItems(state, action: PayloadAction<string[]>) {
-      state.openAccordionItems = action.payload
+    setOpenAccordionItem(state, action: PayloadAction<string>) {
+      state.openAccordionItem = action.payload
     },
   },
 })
 
-export const { setOpenAccordionItems } = homeSlice.actions
+export const { setOpenAccordionItem } = homeSlice.actions
 export default homeSlice.reducer

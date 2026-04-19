@@ -14,3 +14,7 @@ https://github.com/shadcn-ui/ui/discussions/9562
 
 Tailwind CSS
 https://tailwindcss.com/docs/aspect-ratio
+
+TanStack DevTools
+https://tanstack.com/devtools/latest/docs/quick-start
+https://www.youtube.com/watch?v=wQ-X501kgpg

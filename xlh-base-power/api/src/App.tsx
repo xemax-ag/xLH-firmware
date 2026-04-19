@@ -32,15 +32,18 @@ export function App() {
 
       const key = event.key.toLowerCase()
       const path =
-        key === "t" ? "/shell/" :
-        key === "p" ? "/plc/" :
-        key === "v" ? "/plc/" :
-        key === "j" ? "/jupyterlite/lab/" :
-        key === "d" ? "/docs" :
-        null
+        key === "t" ? "/terminal/" :
+          key === "p" ? "/plc/" :
+            key === "v" ? "/plc/" :
+              key === "j" ? "/jupyterlite/lab/" :
+                key === "d" ? "/docs" :
+                  null
       if (!path) return
 
-      const url = `${import.meta.env.API_BASE_URL}${path}`
+      const base = import.meta.env.DEV
+        ? import.meta.env.API_BASE_URL
+        : window.location.origin
+      const url = `${base}${path}`
       const win = window.open(url, "_blank")
       win?.focus()
     }

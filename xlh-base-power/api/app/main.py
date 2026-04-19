@@ -9,6 +9,7 @@ import logging
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.api.v1.rgb import router as rgb_router
+from app.api.appversion import router as version_router
 from fastapi.staticfiles import StaticFiles
 from app.core.toolbox.logging_app import setup_logging
 from app.core.templates.base import template_base
@@ -43,6 +44,8 @@ app = FastAPI(
 app.include_router(docs_api_dark, include_in_schema=False)
 
 # app.include_router(router=html_router, prefix='', tags=['html'], include_in_schema=False)
+
+app.include_router(router=version_router, prefix='/version', tags=['version'], include_in_schema=True)
 
 if get_xlh_type() == XlhType.BASE:
     app.include_router(router=rgb_router, prefix='/v1/rgb', tags=['v1 rgb'], include_in_schema=True)

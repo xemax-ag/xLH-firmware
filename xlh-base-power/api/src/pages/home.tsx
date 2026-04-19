@@ -1,4 +1,6 @@
+import {useEffect} from "react"
 import {ExternalLink} from "lucide-react"
+import {useQuery} from "@tanstack/react-query"
 import {Button} from "@/components/ui/button"
 import {
   Accordion,
@@ -7,29 +9,52 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import {useAppDispatch, useAppSelector} from "@/store"
-import {setOpenAccordionItems} from "@/store/home-slice"
+import {setOpenAccordionItem} from "@/store/home-slice"
+import type {components} from "@/apis/xlh_api.ts"
+
+type AppVersion = components["schemas"]["AppVersion"]
 
 function openExternal(url: string) {
   const win = window.open(`${url}`, "_blank")
   win?.focus()
 }
 
+async function fetchAppVersion(): Promise<AppVersion> {
+  const base = import.meta.env.DEV
+    ? import.meta.env.API_BASE_URL
+    : window.location.origin
+  const res = await fetch(`${base}/version/app/`)
+  if (!res.ok) throw new Error(`version/app failed: ${res.status}`)
+  return res.json()
+}
+
 export function Home() {
-  const openItems = useAppSelector((s) => s.home.openAccordionItems)
+  const openItem = useAppSelector((s) => s.home.openAccordionItem)
   const dispatch = useAppDispatch()
+  const {data: appVersion, refetch: refetchAppVersion} = useQuery({
+    queryKey: ["/version/app/"],
+    queryFn: fetchAppVersion,
+    enabled: false,
+  })
+
+  useEffect(() => {
+    // console.log(`${import.meta.env.API_BASE_URL}/version/app/`)
+    refetchAppVersion()
+  }, [refetchAppVersion])
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-content mx-auto px-4">
       <h1 className="text-xl font-bold">xLH xemax Learning Hub</h1>
-
+      <p className="">Version {appVersion?.version ?? "…"}</p>
       <Accordion
-        type="multiple"
-        value={openItems}
-        onValueChange={(v) => dispatch(setOpenAccordionItems(v))}
-        className="max-w-lg"
+        type="single"
+        collapsible
+        value={openItem}
+        onValueChange={(v) => dispatch(setOpenAccordionItem(v))}
+        className="max-w-content"
       >
         <AccordionItem value="plc">
-          <AccordionTrigger>PLC programmable logic controller</AccordionTrigger>
+          <AccordionTrigger className="font-bold">PLC programmable logic controller</AccordionTrigger>
           <AccordionContent>
             <div className="flex-1">
               <div className="flex flex-row items-center pt-2 pb-2">
@@ -39,7 +64,7 @@ export function Home() {
                   </Button>
                 </div>
                 <div className="flex-1">
-                  Visualization PLC
+                  PLC-Visualization
                 </div>
               </div>
 
@@ -69,7 +94,7 @@ export function Home() {
         </AccordionItem>
 
         <AccordionItem value="jupyterlite">
-          <AccordionTrigger>Python - Jupyterlite development environment</AccordionTrigger>
+          <AccordionTrigger className="font-bold">Python - Jupyterlite development environment</AccordionTrigger>
           <AccordionContent>
             <div className="flex-1">
               <div className="flex flex-row items-center pt-2 pb-2">

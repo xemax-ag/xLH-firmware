@@ -16,7 +16,7 @@ export function Help() {
         <li>
           Python - Jupyterlite development environment for writing Python programs. Note
           that the Python interpreter is based on <a href="https://webassembly.org/" target="_blank">Wasm</a>, so
-          Python code runs in the browser, not on the xLH machine.
+          Python code runs in the browser, not on the xLH computer.
         </li>
 
         <li>

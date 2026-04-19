@@ -5,7 +5,7 @@ export function ApiDocs() {
       <iframe
         className="col-md-12 mb-4 w-full"
         style={{ minHeight: 750, width: "100%" }}
-        src={`${import.meta.env.API_BASE_URL}/docs`}
+        src="/docs"
         title="Docs"
       />
     </div>

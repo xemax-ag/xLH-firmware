@@ -5,7 +5,7 @@ export function PLCVisualization() {
       <iframe
         className="col-md-12 mb-4 w-full"
         style={{ minHeight: 720, minWidth: 1280 }}
-        src={`${import.meta.env.API_BASE_URL}/plc/`}
+        src="/plc/"
         title="Terminal"
       />
     </div>

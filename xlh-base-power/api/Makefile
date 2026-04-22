@@ -1,4 +1,4 @@
-HOST=192.168.1.168
+HOST=192.168.1.31
 USER=xlh
 PASSWORD=xlh
 SERVICE=xlh_api.service

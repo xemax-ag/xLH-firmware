@@ -2,13 +2,15 @@ export function Terminal() {
   return (
     <div className="flex flex-col gap-4 w-full max-w-content mx-auto px-4">
       {/*<h1 className="text-xl font-bold">Terminal</h1>*/}
-      <iframe
-        className="col-md-12 mb-4 w-full"
-        style={{minHeight: 600, width: "100%"}}
-        src="/terminal/"
-        title="Terminal"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-      />
+      <div className="mb-2 w-full overflow-hidden">
+        <iframe
+          className="block border-0"
+          style={{minHeight: 600, width: "calc(100% + 20px)"}}
+          src="/terminal/"
+          title="Terminal"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        />
+      </div>
 
       <h2 className="text-lg font-bold">The most important commands</h2>
 

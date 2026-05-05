@@ -2,16 +2,16 @@
 Lines=0
 
 [FileInfo]
-FileName=1004_xlh_stamp_potentiometer_8_00_01.eds
+FileName=1004_xlh_stamp_potentiometer_8_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_potentiometer_8
-CreationTime=11:33AM
-CreationDate=01-11-2026
+CreationTime=09:02AM
+CreationDate=05-05-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=11:33AM
-ModificationDate=01-11-2026
+ModificationTime=09:02AM
+ModificationDate=05-05-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]

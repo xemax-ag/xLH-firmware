@@ -2,16 +2,16 @@
 Lines=0
 
 [FileInfo]
-FileName=1005_xlh_stamp_adc_dac_00_01.eds
+FileName=1005_xlh_stamp_adc_dac_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_stamp_adc_dac
-CreationTime=12:38PM
-CreationDate=01-11-2026
+CreationTime=09:03AM
+CreationDate=05-05-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=12:38PM
-ModificationDate=01-11-2026
+ModificationTime=09:03AM
+ModificationDate=05-05-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]

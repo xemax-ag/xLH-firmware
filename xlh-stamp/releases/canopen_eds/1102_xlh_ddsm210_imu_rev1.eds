@@ -7,11 +7,11 @@ FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_ddsm210_imu
-CreationTime=02:37PM
-CreationDate=01-27-2026
+CreationTime=09:07AM
+CreationDate=05-05-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=02:37PM
-ModificationDate=01-27-2026
+ModificationTime=09:07AM
+ModificationDate=05-05-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]

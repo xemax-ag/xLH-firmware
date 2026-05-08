@@ -8,13 +8,11 @@
 typedef struct
 {
   uint8_t byLedsButton;
-  uint8_t byLedsSwitch;
 } s_in;
 
 typedef struct
 {
   uint8_t byInputsButton;
-  uint8_t byInputsSwitch;
 } s_out;
 
 class CAN_OPEN: public CAN_OPEN_BASE

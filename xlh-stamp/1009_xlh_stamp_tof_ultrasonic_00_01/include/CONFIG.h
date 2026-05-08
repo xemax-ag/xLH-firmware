@@ -1,0 +1,11 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
+#define VERSION "0.01 | REV1"
+#define GPIO_TOUCH_BTN GPIO_NUM_41
+
+#define ISR_TIMER_0_TIME_US 5000
+
+#define SENS_SONIC_ADDR 0x57
+
+#endif

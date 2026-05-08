@@ -21,12 +21,12 @@ void visu_loop(void)
     // sprite.setFont(&fonts::FreeMonoBold12pt7b);
     sprite.setFont(&fonts::FreeMonoBold9pt7b);
     sprite.setCursor(0, 5);
-    sprite.printf("BTN-SW-LED\r\n");
+    sprite.printf("BTN-LED\r\n");
 
-    sprite.printf("SI " PRINTF_BINARY_PATTERN_INT8 "\r\n", PRINTF_BYTE_TO_BINARY_INT8(can_open.out.byInputsSwitch));
-    sprite.printf("SO " PRINTF_BINARY_PATTERN_INT8 "\r\n", PRINTF_BYTE_TO_BINARY_INT8(can_open.in.byLedsSwitch));
     sprite.printf("BI " PRINTF_BINARY_PATTERN_INT8 "\r\n", PRINTF_BYTE_TO_BINARY_INT8(can_open.out.byInputsButton));
     sprite.printf("BO " PRINTF_BINARY_PATTERN_INT8 "\r\n", PRINTF_BYTE_TO_BINARY_INT8(can_open.in.byLedsButton));
+    sprite.printf("\r\n");
+    sprite.printf("\r\n");
 
     sprite.printf("ID %02d ", can_open.node_id);
     if (can_open.node_guard_state == NODE_GUARD_STATE_STOPPED)

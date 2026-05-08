@@ -19,7 +19,6 @@ hw_timer_t *timer0 = NULL;
 StackType_t xStackDisplay[STACK_SIZE_DISPLAY];
 StaticTask_t xTaskBufferDisplay;
 
-UnitByte device_switch;
 UnitByte device_button;
 
 void setup()
@@ -32,21 +31,16 @@ void setup()
     Serial.begin(921600);
     // Wire1.begin(G38, G39, 400000L);
 
-    device_switch.begin(&Wire1, DEVICE_ID_SWITCH, G38, G39, 4000000L);
-    device_switch.setLEDShowMode(BYTE_LED_USER_DEFINED);
     device_button.begin(&Wire1, DEVICE_ID_BUTTON, G38, G39, 4000000L);
     device_button.setLEDShowMode(BYTE_LED_USER_DEFINED);
     for (int i = 0; i < 8; i++)
     {
-        device_switch.setRGB888(i, 0x000000);
         device_button.setRGB888(i, 0x000000);
     }
     for (int i = 0; i < 8; i++)
     {
-        device_switch.setLEDBrightness(i, 255);
         device_button.setLEDBrightness(i, 255);
     }
-    device_switch.setIRQEnable(1);
     device_button.setIRQEnable(1);
 
     can_open.setup(0);
@@ -79,7 +73,6 @@ void loop()
     loop_time_start = micros();
 
     can_open.out.byInputsButton = ~device_button.getSwitchStatus();
-    can_open.out.byInputsSwitch = device_switch.getSwitchStatus();
 
     uint8_t ledState[8];
 
@@ -100,26 +93,6 @@ void loop()
         else
         {
             device_button.setRGB888(i, 0x000000);
-        }
-    }
-
-    ledState[7] = can_open.in.byLedsSwitch & 0b10000000;
-    ledState[6] = can_open.in.byLedsSwitch & 0b01000000;
-    ledState[5] = can_open.in.byLedsSwitch & 0b00100000;
-    ledState[4] = can_open.in.byLedsSwitch & 0b00010000;
-    ledState[3] = can_open.in.byLedsSwitch & 0b00001000;
-    ledState[2] = can_open.in.byLedsSwitch & 0b00000100;
-    ledState[1] = can_open.in.byLedsSwitch & 0b00000010;
-    ledState[0] = can_open.in.byLedsSwitch & 0b00000001;
-    for (int i = 0; i < 8; i++)
-    {
-        if (ledState[i] != 0)
-        {
-            device_switch.setRGB888(i, 0x00FF00);
-        }
-        else
-        {
-            device_switch.setRGB888(i, 0x000000);
         }
     }
 

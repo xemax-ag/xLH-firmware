@@ -23,10 +23,9 @@ void CAN_OPEN::rx_pdo_1(twai_message_t *msg_rx)
 {
   CAN_OPEN_BASE::rx_pdo_1(msg_rx);
   can_msg_data_int_to_byte canMsgDataIntToByte;
-  if ((msg_rx->identifier == this->pdo_rx_1_id) && (msg_rx->data_length_code == 2))
+  if ((msg_rx->identifier == this->pdo_rx_1_id) && (msg_rx->data_length_code == 1))
   {
     this->in.byLedsButton = msg_rx->data[0];
-    this->in.byLedsSwitch = msg_rx->data[1];
   }
 }
 
@@ -34,8 +33,6 @@ void CAN_OPEN::tx_pdo_1(void)
 {
   CAN_OPEN_BASE::tx_pdo_1();
   if (this->out.byInputsButton != this->out_old.byInputsButton)
-    this->pdo_tx_1_send_msg = 1;
-  if (this->out.byInputsSwitch != this->out_old.byInputsSwitch)
     this->pdo_tx_1_send_msg = 1;
 
   if ((this->node_guard_state == NODE_GUARD_STATE_OPERATIONAL) && (this->pdo_tx_1_send_msg == 1))
@@ -45,13 +42,11 @@ void CAN_OPEN::tx_pdo_1(void)
     
     this->pdo_tx_1_send_msg = 0;
     tx_frame.extd = 0;
-    tx_frame.data_length_code = 2;
+    tx_frame.data_length_code = 1;
     tx_frame.identifier = this->pdo_tx_1_id;
     tx_frame.data[0] = this->out.byInputsButton;
-    tx_frame.data[1] = this->out.byInputsSwitch;
     ESP32Can.writeFrame(&tx_frame);
     this->out_old.byInputsButton = this->out.byInputsButton;
-    this->out_old.byInputsSwitch = this->out.byInputsSwitch;
   }
 }
 
@@ -59,7 +54,6 @@ void CAN_OPEN::reset_output(void)
 {
   CAN_OPEN_BASE::reset_output();
   this->in.byLedsButton = 0;
-  this->in.byLedsSwitch = 0;
 }
 
 void CAN_OPEN::loop(void){

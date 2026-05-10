@@ -2,23 +2,23 @@
 Lines=0
 
 [FileInfo]
-FileName=1107_xlh_motion_rev1.eds
+FileName=1201_xlh_motion_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_motion
-CreationTime=08:59AM
-CreationDate=05-05-2026
+CreationTime=05:54AM
+CreationDate=05-10-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=08:59AM
-ModificationDate=05-05-2026
+ModificationTime=05:54AM
+ModificationDate=05-10-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
 VendorName=xemax ag
 VendorNumber=0x0321
 ProductName=xlh_motion
-ProductNumber=0x0453
+ProductNumber=0x04B1
 RevisionNumber=0x0001
 OrderCode=0
 BaudRate_10=1
@@ -217,7 +217,7 @@ ParameterName=Product Code
 ObjectType=0x07
 DataType=0x0007
 AccessType=ro
-DefaultValue=1107
+DefaultValue=1201
 PDOMapping=0
 
 [1018sub3]

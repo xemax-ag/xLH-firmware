@@ -37,16 +37,17 @@ void visu_loop(void)
     //sprite.printf("POS %d\r\n", can_open.out.diPosition);
     //sprite.printf("MIL %d %d\r\n", ddsm210.diDdsm210Mileage, ddsm210.diDeltaPos);
     
-    sprite.printf("CO-ID %02d\r\n", can_open.node_id);
-    sprite.printf("STATE ", can_open.node_id);
+    sprite.printf("ID %02d ", can_open.node_id);
     if (can_open.node_guard_state == NODE_GUARD_STATE_STOPPED)
         sprite.printf("STOP\r\n", can_open.node_id);
     else if (can_open.node_guard_state == NODE_GUARD_STATE_PRE_OPERATIONAL)
-        sprite.printf("PRE OP\r\n", can_open.node_id);
+        sprite.printf("PREOP\r\n", can_open.node_id);
     else if (can_open.node_guard_state == NODE_GUARD_STATE_OPERATIONAL)
         sprite.printf("OPRT\r\n", can_open.node_id);
     else
         sprite.printf("ERROR\r\n", can_open.node_id);
+
     sprite.printf("%s\r\n", VERSION);
+    
     sprite.pushSprite(0, 0);
 }

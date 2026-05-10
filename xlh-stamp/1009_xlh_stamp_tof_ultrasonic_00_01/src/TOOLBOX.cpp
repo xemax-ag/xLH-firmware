@@ -21,7 +21,7 @@ void visu_loop(void)
     // sprite.setFont(&fonts::FreeMonoBold12pt7b);
     sprite.setFont(&fonts::FreeMonoBold9pt7b);
     sprite.setCursor(0, 5);
-    sprite.printf("BTNSWLEDJST\r\n");
+    sprite.printf("TOF USC\r\n");
 
     sprite.printf("TOF %d\r\n", can_open.out.uiTof);
     sprite.printf("USC %d\r\n", can_open.out.uiUltrasonic);
@@ -37,6 +37,8 @@ void visu_loop(void)
         sprite.printf("OPRT\r\n", can_open.node_id);
     else
         sprite.printf("ERROR\r\n", can_open.node_id);
+
     sprite.printf("%s\r\n", VERSION);
+    
     sprite.pushSprite(0, 0);
 }

@@ -1,10 +1,10 @@
 #include <Arduino.h>
 #include <M5AtomS3.h>
+#include <EEPROM.h>
 #include "CONFIG.h"
 #include "CAN_OPEN.h"
 #include "TOOLBOX.h"
-#include <EEPROM.h>
-#include "SPI_IO.h"
+#include "CHAIN.h"
 #include "main.h"
 
 hw_timer_t *timer0 = NULL;
@@ -20,8 +20,8 @@ void setup()
 	visu_setup();
 	pinMode(GPIO_TOUCH_BTN, INPUT);
 	EEPROM.begin(1);
-	// Serial.begin(921600);
-	spi_io.setup();
+	Serial.begin(921600);
+	chain.setup();
 	can_open.setup(0);
 
 	timer0 = timerBegin(0, 80, true);
@@ -57,8 +57,14 @@ void loop()
 		init_done = 1;
 	}
 	
-	spi_io.cyclic_isr();
 	can_open.loop();
+
+	can_open.out.abyTxData1[0]++;
+	can_open.out.abyTxData2[0]++;
+	can_open.out.abyTxData3[0]++;
+	can_open.out.abyTxData4[0]++;
+	
+	chain.cyclic();
 
 	can_open.obj_dict_base.refresh_time = micros() - cycle_time_old; // us
 	cycle_time_old = micros();
@@ -80,5 +86,4 @@ void IRAM_ATTR TimerHandler0()
 {
 	can_open.cyclic_isr_rx();
 	can_open.cyclic_isr_tx();
-	//spi_io.cyclic_isr();
 }

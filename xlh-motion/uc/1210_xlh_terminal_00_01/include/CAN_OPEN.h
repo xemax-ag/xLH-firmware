@@ -7,12 +7,18 @@
 
 typedef struct
 {
-  uint8_t byDummy;
+  uint8_t abyRxData1[8];
+  uint8_t abyRxData2[8];
+  uint8_t abyRxData3[8];
+  uint8_t abyRxData4[8];  
 } s_in;
 
 typedef struct
 {
-  uint8_t byDummy;
+  uint8_t abyTxData1[8];
+  uint8_t abyTxData2[8];
+  uint8_t abyTxData3[8];
+  uint8_t abyTxData4[8];
 } s_out;
 
 class CAN_OPEN : public CAN_OPEN_BASE
@@ -28,6 +34,7 @@ public:
   void tx_pdo_1(void) override;
   void tx_pdo_2(void) override;
   void tx_pdo_3(void) override;
+  void tx_pdo_4(void) override;
   void reset_output(void) override;
   void loop(void);
   s_in in;

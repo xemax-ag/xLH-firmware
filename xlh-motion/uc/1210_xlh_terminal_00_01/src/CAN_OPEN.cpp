@@ -5,6 +5,8 @@
 #include "TOOLBOX.h"
 #include "CONFIG.h"
 #include <EEPROM.h>
+#include "CHAIN1.h"
+#include "CHAIN2.h"
 
 CAN_OPEN::CAN_OPEN(void) : CAN_OPEN_BASE() { ; }
 
@@ -22,6 +24,7 @@ void CAN_OPEN::rx_pdo_1(twai_message_t *msg_rx)
 {
   CAN_OPEN_BASE::rx_pdo_1(msg_rx);
   uint8_t i; 
+  uint8_t brightness; 
 
   if ((msg_rx->identifier == this->pdo_rx_1_id) && (msg_rx->data_length_code == 8))
   {
@@ -33,6 +36,67 @@ void CAN_OPEN::rx_pdo_1(twai_message_t *msg_rx)
     this->in.abyRxData1[5] = msg_rx->data[5];
     this->in.abyRxData1[6] = msg_rx->data[6];
     this->in.abyRxData1[7] = msg_rx->data[7];
+
+    chain1.in.rgbLed[0] = (this->in.abyRxData1[0] & 0b00000011);
+    chain1.in.rgbLed[1] = (this->in.abyRxData1[0] & 0b00001100) >> 2;
+    chain1.in.rgbLed[2] = (this->in.abyRxData1[0] & 0b00110000) >> 4;
+    chain1.in.rgbLed[3] = (this->in.abyRxData1[0] & 0b11000000) >> 6;
+    
+    chain1.in.rgbLed[4] = (this->in.abyRxData1[1] & 0b00000011);
+    chain1.in.rgbLed[5] = (this->in.abyRxData1[1] & 0b00001100) >> 2;
+    chain1.in.rgbLed[6] = (this->in.abyRxData1[1] & 0b00110000) >> 4;
+    chain1.in.rgbLed[7] = (this->in.abyRxData1[1] & 0b11000000) >> 6;
+    
+    chain2.in.rgbLed[0] = (this->in.abyRxData1[2] & 0b00000011);
+    chain2.in.rgbLed[1] = (this->in.abyRxData1[2] & 0b00001100) >> 2;
+    chain2.in.rgbLed[2] = (this->in.abyRxData1[2] & 0b00110000) >> 4;
+    chain2.in.rgbLed[3] = (this->in.abyRxData1[2] & 0b11000000) >> 6;
+    
+    chain2.in.rgbLed[4] = (this->in.abyRxData1[3] & 0b00000011);
+    chain2.in.rgbLed[5] = (this->in.abyRxData1[3] & 0b00001100) >> 2;
+    chain2.in.rgbLed[6] = (this->in.abyRxData1[3] & 0b00110000) >> 4;
+    chain2.in.rgbLed[7] = (this->in.abyRxData1[3] & 0b11000000) >> 6;
+
+    chain2.in.rgbLed[8] = (this->in.abyRxData1[4] & 0b00000011);
+    chain2.in.rgbLed[9] = (this->in.abyRxData1[4] & 0b00001100) >> 2;
+    chain2.in.rgbLed[10] = (this->in.abyRxData1[4] & 0b00110000) >> 4;
+    chain2.in.rgbLed[11] = (this->in.abyRxData1[4] & 0b11000000) >> 6;
+
+    brightness = this->in.abyRxData1[7];
+    if (brightness > 100) brightness = 100;
+    chain1.in.rgbLedBrightness[0] = brightness;
+    chain1.in.rgbLedBrightness[1] = brightness;
+    chain1.in.rgbLedBrightness[2] = brightness;
+    chain1.in.rgbLedBrightness[3] = brightness;
+    chain1.in.rgbLedBrightness[4] = brightness;
+    chain1.in.rgbLedBrightness[5] = brightness;
+    chain1.in.rgbLedBrightness[6] = brightness;
+    chain1.in.rgbLedBrightness[7] = brightness;
+    chain1.in.rgbLedBrightness[8] = brightness;
+    chain1.in.rgbLedBrightness[9] = brightness;
+    chain1.in.rgbLedBrightness[10] = brightness;
+    chain1.in.rgbLedBrightness[11] = brightness;
+    chain1.in.rgbLedBrightness[12] = brightness;
+    chain1.in.rgbLedBrightness[13] = brightness;
+    chain1.in.rgbLedBrightness[14] = brightness;
+    chain1.in.rgbLedBrightness[15] = brightness;
+    
+    chain2.in.rgbLedBrightness[0] = brightness;
+    chain2.in.rgbLedBrightness[1] = brightness;
+    chain2.in.rgbLedBrightness[2] = brightness;
+    chain2.in.rgbLedBrightness[3] = brightness;
+    chain2.in.rgbLedBrightness[4] = brightness;
+    chain2.in.rgbLedBrightness[5] = brightness;
+    chain2.in.rgbLedBrightness[6] = brightness;
+    chain2.in.rgbLedBrightness[7] = brightness;
+    chain2.in.rgbLedBrightness[8] = brightness;
+    chain2.in.rgbLedBrightness[9] = brightness;
+    chain2.in.rgbLedBrightness[10] = brightness;
+    chain2.in.rgbLedBrightness[11] = brightness;
+    chain2.in.rgbLedBrightness[12] = brightness;
+    chain2.in.rgbLedBrightness[13] = brightness;
+    chain2.in.rgbLedBrightness[14] = brightness;
+    chain2.in.rgbLedBrightness[15] = brightness;
   }
 }
 
@@ -95,6 +159,23 @@ void CAN_OPEN::rx_pdo_4(twai_message_t *msg_rx)
 
 void CAN_OPEN::tx_pdo_1(void)
 {
+  can_msg_data_int_to_byte canMsgDataIntToByte;
+
+  this->out.abyTxData1[0] = chain1.out.value8Bit[0];
+  this->out.abyTxData1[1] = chain1.out.value8Bit[1];
+
+  canMsgDataIntToByte.iValue = chain1.out.value16Bit[0];
+  this->out.abyTxData1[2] = canMsgDataIntToByte.abyValue[0];
+  this->out.abyTxData1[3] = canMsgDataIntToByte.abyValue[1];
+
+  canMsgDataIntToByte.iValue = chain1.out.value16Bit[1];
+  this->out.abyTxData1[4] = canMsgDataIntToByte.abyValue[0];
+  this->out.abyTxData1[5] = canMsgDataIntToByte.abyValue[1];
+
+  canMsgDataIntToByte.iValue = chain1.out.value16Bit[2];
+  this->out.abyTxData1[6] = canMsgDataIntToByte.abyValue[0];
+  this->out.abyTxData1[7] = canMsgDataIntToByte.abyValue[1];
+    
   CAN_OPEN_BASE::tx_pdo_1();
 
   if (this->out.abyTxData1[0] != this->out_old.abyTxData1[0]) this->pdo_tx_1_send_msg = 1;
@@ -138,6 +219,15 @@ void CAN_OPEN::tx_pdo_1(void)
 
 void CAN_OPEN::tx_pdo_2(void)
 {
+  can_msg_data_int_to_byte canMsgDataIntToByte;
+
+  this->out.abyTxData2[0] = chain2.out.value8Bit[0];
+  this->out.abyTxData2[1] = chain2.out.value8Bit[1];
+
+  canMsgDataIntToByte.iValue = chain2.out.value16Bit[0];
+  this->out.abyTxData2[2] = canMsgDataIntToByte.abyValue[0];
+  this->out.abyTxData2[3] = canMsgDataIntToByte.abyValue[1];
+
   CAN_OPEN_BASE::tx_pdo_2();
 
   if (this->out.abyTxData2[0] != this->out_old.abyTxData2[0]) this->pdo_tx_2_send_msg = 1;

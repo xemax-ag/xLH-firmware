@@ -8,6 +8,7 @@ ToDo:
 #include <stdint.h>
 #include <Arduino.h>
 #include <ESP32-TWAI-CAN.hpp>
+#include "CONFIG.h"
 #include "CAN_OPEN_BASE.h"
 
 #define CAN_RX_PIN GPIO_NUM_8
@@ -444,7 +445,7 @@ void CAN_OPEN_BASE::cyclic_isr_rx(void)
 
 void CAN_OPEN_BASE::cyclic_isr_tx(void)
 {
-  this->ms_counter(5);
+  this->ms_counter(ISR_TIMER_0_TIME_US/1000);
   this->node_guard_timeout();
   this->tx_pdo_1();
   this->tx_pdo_2();

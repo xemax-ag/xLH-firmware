@@ -117,11 +117,11 @@ void CHAIN2::cyclic(void)
         value = value << 1;
         value += this->out.keyButtonStatus[6];
         value = value << 1;
-        value += this->out.keyButtonStatus[5];
-        value = value << 1;
         value += this->out.keyButtonStatus[4];
         value = value << 1;
         value += this->out.keyButtonStatus[3];
+        value = value << 1;
+        value += this->out.keyButtonStatus[2];
         value = value << 1;
         value += this->out.keyButtonStatus[1];
         value = value << 1;
@@ -129,10 +129,16 @@ void CHAIN2::cyclic(void)
         this->out.value8Bit[0] = value;
 
         value = 0;
+        value += this->out.keyButtonStatus[12];
+        value = value << 1;
+        value += this->out.keyButtonStatus[11];
+        value = value << 1;
+        value += this->out.keyButtonStatus[10];
+        value = value << 1;
         value += this->out.keyButtonStatus[9];
         this->out.value8Bit[1] = value;
 
-        this->out.value16Bit[0] = this->out.angleValue[2];
+        this->out.value16Bit[0] = this->out.angleValue[5];
     }
 }
 

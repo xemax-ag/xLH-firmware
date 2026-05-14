@@ -27,10 +27,14 @@ void visu_loop(void)
     sprite.printf("MOTION\r\n");
 
     sprite.printf("MGN %d\r\n", spi_io.uc.d.uiMagnetDutyCycle);
+    sprite.printf("\r\n");
+    sprite.printf("\r\n");
+    sprite.printf("\r\n");
+    
     //sprite.printf("CLK %d\r\n", spi_io.fpga.d.byDigInClk);
-    sprite.printf("CTL %d\r\n", spi_io.uc.d.byControl1);
-    sprite.printf("FRQ %d\r\n", spi_io.uc.d.diFrequency1);
-    sprite.printf("POS %d\r\n", spi_io.fpga.d.diPosition1);
+    //sprite.printf("CTL %d\r\n", spi_io.uc.d.byControl1);
+    //sprite.printf("FRQ %d\r\n", spi_io.uc.d.diFrequency1);
+    //sprite.printf("POS %d\r\n", spi_io.fpga.d.diPosition1);
     
     // sprite.printf("D1 %d\r\n", can_open.out.uiUltrasonic[1]);
     //sprite.printf("SPEED %d\r\n", can_open.out.iSpeed);

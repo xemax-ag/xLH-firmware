@@ -125,6 +125,14 @@ void CHAIN1::cyclic(void)
         value += this->out.keyButtonStatus[0];
         this->out.value8Bit[0] = value;
 
+        value = 0;
+        value += this->out.keyButtonStatus[10];
+        value = value << 1;
+        value += this->out.keyButtonStatus[9];
+        value = value << 1;
+        value += this->out.keyButtonStatus[8];
+        this->out.value8Bit[1] = value;
+
         this->out.value16Bit[0] = this->out.encoderValue[1];
         this->out.value16Bit[1] = this->out.encoderValue[2];
         this->out.value16Bit[2] = this->out.encoderValue[3];

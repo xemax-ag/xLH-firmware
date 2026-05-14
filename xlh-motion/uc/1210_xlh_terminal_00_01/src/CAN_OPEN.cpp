@@ -46,21 +46,26 @@ void CAN_OPEN::rx_pdo_1(twai_message_t *msg_rx)
     chain1.in.rgbLed[5] = (this->in.abyRxData1[1] & 0b00001100) >> 2;
     chain1.in.rgbLed[6] = (this->in.abyRxData1[1] & 0b00110000) >> 4;
     chain1.in.rgbLed[7] = (this->in.abyRxData1[1] & 0b11000000) >> 6;
-    
-    chain2.in.rgbLed[0] = (this->in.abyRxData1[2] & 0b00000011);
-    chain2.in.rgbLed[1] = (this->in.abyRxData1[2] & 0b00001100) >> 2;
-    chain2.in.rgbLed[2] = (this->in.abyRxData1[2] & 0b00110000) >> 4;
-    chain2.in.rgbLed[3] = (this->in.abyRxData1[2] & 0b11000000) >> 6;
-    
-    chain2.in.rgbLed[4] = (this->in.abyRxData1[3] & 0b00000011);
-    chain2.in.rgbLed[5] = (this->in.abyRxData1[3] & 0b00001100) >> 2;
-    chain2.in.rgbLed[6] = (this->in.abyRxData1[3] & 0b00110000) >> 4;
-    chain2.in.rgbLed[7] = (this->in.abyRxData1[3] & 0b11000000) >> 6;
 
-    chain2.in.rgbLed[8] = (this->in.abyRxData1[4] & 0b00000011);
-    chain2.in.rgbLed[9] = (this->in.abyRxData1[4] & 0b00001100) >> 2;
-    chain2.in.rgbLed[10] = (this->in.abyRxData1[4] & 0b00110000) >> 4;
-    chain2.in.rgbLed[11] = (this->in.abyRxData1[4] & 0b11000000) >> 6;
+    chain1.in.rgbLed[8] = (this->in.abyRxData1[2] & 0b00000011);
+    chain1.in.rgbLed[9] = (this->in.abyRxData1[2] & 0b00001100) >> 2;
+    chain1.in.rgbLed[10] = (this->in.abyRxData1[2] & 0b00110000) >> 4;
+    chain2.in.rgbLed[0] = (this->in.abyRxData1[2] & 0b11000000) >> 6;
+
+    chain2.in.rgbLed[1] = (this->in.abyRxData1[3] & 0b00000011);
+    chain2.in.rgbLed[2] = (this->in.abyRxData1[3] & 0b00001100) >> 2;
+    chain2.in.rgbLed[3] = (this->in.abyRxData1[3] & 0b00110000) >> 4;
+    chain2.in.rgbLed[4] = (this->in.abyRxData1[3] & 0b11000000) >> 6;
+    
+    chain2.in.rgbLed[5] = (this->in.abyRxData1[4] & 0b00000011);
+    chain2.in.rgbLed[6] = (this->in.abyRxData1[4] & 0b00001100) >> 2;
+    chain2.in.rgbLed[7] = (this->in.abyRxData1[4] & 0b00110000) >> 4;
+    chain2.in.rgbLed[8] = (this->in.abyRxData1[4] & 0b11000000) >> 6;
+
+    chain2.in.rgbLed[9] = (this->in.abyRxData1[5] & 0b00000011);
+    chain2.in.rgbLed[10] = (this->in.abyRxData1[5] & 0b00001100) >> 2;
+    chain2.in.rgbLed[11] = (this->in.abyRxData1[5] & 0b00110000) >> 4;
+    chain2.in.rgbLed[12] = (this->in.abyRxData1[5] & 0b11000000) >> 6;
 
     brightness = this->in.abyRxData1[7];
     if (brightness > 100) brightness = 100;

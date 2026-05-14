@@ -2,6 +2,8 @@
 
 ESP32 driver library for TWAI / CAN for Arduino using ESP-IDF drivers.
 
+I reccomend using TI SN65HVD230 transreceiver (or similair) as hardware.
+
 Tested on ESP32 and ESP32-S3.
 
 # Usage

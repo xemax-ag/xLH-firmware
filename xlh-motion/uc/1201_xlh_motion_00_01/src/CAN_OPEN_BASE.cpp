@@ -25,7 +25,7 @@ void CAN_OPEN_BASE::setup(void)
   this->node_guard_state = NODE_GUARD_STATE_STOPPED;
 
   // Optimierung: CanId Filter
-  ESP32Can.begin(ESP32Can.convertSpeed(1000), CAN_TX_PIN, CAN_RX_PIN, 10, 32);
+  ESP32Can.begin(ESP32Can.convertSpeed(1000), CAN_TX_PIN, CAN_RX_PIN, 32, 64);
 }
 
 void CAN_OPEN_BASE::ids(void)
@@ -416,7 +416,7 @@ void CAN_OPEN_BASE::cyclic_isr_rx(void)
   twai_message_t msg_rx;
   uint16_t n;
 
-  for (int n = 0; n < 32; n++)
+  for (int n = 0; n < 64; n++)
   {
     if (ESP32Can.readFrame(&msg_rx, 0))
     {

@@ -9,6 +9,6 @@
 #define HSPI_SCLK G39
 #define HSPI_SS   G5
 
-#define ISR_TIMER_0_TIME_US 4000
+#define ISR_TIMER_0_TIME_US 16000
 
 #endif

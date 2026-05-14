@@ -10,11 +10,11 @@
 
 hw_timer_t *timer0 = NULL;
 
-#define STACK_SIZE_CHAIN1 5000
+#define STACK_SIZE_CHAIN1 25000
 StackType_t xStackChain1[STACK_SIZE_CHAIN1];
 StaticTask_t xTaskBufferChain1;
 
-#define STACK_SIZE_CHAIN2 5000
+#define STACK_SIZE_CHAIN2 25000
 StackType_t xStackChain2[STACK_SIZE_CHAIN2];
 StaticTask_t xTaskBufferChain2;
 
@@ -43,7 +43,7 @@ void setup()
 	can_open.bootup();
 
 	// https://www.freertos.org/Documentation/02-Kernel/04-API-references/01-Task-creation/01-xTaskCreate
-	// configMAX_PRIORITIES
+	//configMAX_PRIORITIES
 
 	TaskHandle_t xHandleChain1 = NULL;
 	xHandleChain1 = xTaskCreateStatic(
@@ -51,7 +51,7 @@ void setup()
 		"loop_chain1",		 /* Text name for the task. */
 		STACK_SIZE_CHAIN1,	 /* Number of indexes in the xStack array. */
 		NULL,				 /* Parameter passed into the task. */
-		8,					 /* Priority at which the task is created. */
+		25,					 /* Priority at which the task is created. */
 		xStackChain1,		 /* Array to use as the task's stack. */
 		&xTaskBufferChain1); /* Variable to hold the task's data structure. */
 
@@ -61,7 +61,7 @@ void setup()
 		"loop_chain2",		 /* Text name for the task. */
 		STACK_SIZE_CHAIN2,	 /* Number of indexes in the xStack array. */
 		NULL,				 /* Parameter passed into the task. */
-		10,					 /* Priority at which the task is created. */
+		24,					 /* Priority at which the task is created. */
 		xStackChain2,		 /* Array to use as the task's stack. */
 		&xTaskBufferChain2); /* Variable to hold the task's data structure. */
 

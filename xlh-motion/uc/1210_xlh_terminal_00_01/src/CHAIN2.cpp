@@ -42,9 +42,13 @@ void CHAIN2::init(void)
                     (this->devicesList->devices[i].device_type == CHAIN_ENCODER_TYPE_CODE))
                 {
                     this->M5Chain.setKeyButtonTriggerInterval(1, BUTTON_DOUBLE_CLICK_TIME_100MS, BUTTON_LONG_PRESS_TIME_10S, &this->operationStatus);
+                    delay(25);
                     this->M5Chain.setRGBValue(this->devicesList->devices[i].id, 0, 1, chainColors[CHAIN_RGB_OFF], 3, &this->operationStatus);
+                    delay(25);
                     this->M5Chain.setRGBLight(this->devicesList->devices[i].id, 20, &this->operationStatus, CHAIN_SAVE_FLASH_DISABLE);
+                    delay(25);
                     this->M5Chain.setKeyButtonMode(this->devicesList->devices[i].id, CHAIN_BUTTON_NONE_REPORT_MODE, &this->operationStatus);
+                    delay(25);
                 }
 
                 if (this->devicesList->devices[i].device_type == CHAIN_ANGLE_TYPE_CODE)
@@ -63,8 +67,9 @@ void CHAIN2::cyclic(void)
     if (this->initDone == 0)
     {
         this->initDone = 1;
-        delay(1000);
+        delay(500);
         this->init();
+        delay(25);
     }
     else
     {

@@ -75,36 +75,6 @@ void CAN_OPEN::rx_pdo_1(twai_message_t *msg_rx)
   }
 }
 
-void CAN_OPEN::rx_pdo_2(twai_message_t *msg_rx)
-{
-  CAN_OPEN_BASE::rx_pdo_2(msg_rx);
-
-  if ((msg_rx->identifier == this->pdo_rx_2_id) && (msg_rx->data_length_code == 8))
-  {
-    memcpy(this->in.abyRxData2, msg_rx->data, 8);
-  }
-}
-
-void CAN_OPEN::rx_pdo_3(twai_message_t *msg_rx)
-{
-  CAN_OPEN_BASE::rx_pdo_3(msg_rx);
-
-  if ((msg_rx->identifier == this->pdo_rx_3_id) && (msg_rx->data_length_code == 8))
-  {
-    memcpy(this->in.abyRxData3, msg_rx->data, 8);
-  }
-}
-
-void CAN_OPEN::rx_pdo_4(twai_message_t *msg_rx)
-{
-  CAN_OPEN_BASE::rx_pdo_4(msg_rx);
-
-  if ((msg_rx->identifier == this->pdo_rx_4_id) && (msg_rx->data_length_code == 8))
-  {
-    memcpy(this->in.abyRxData4, msg_rx->data, 8);
-  }
-}
-
 void CAN_OPEN::tx_pdo_1(void)
 {
   can_msg_data_int_to_byte canMsgDataIntToByte;
@@ -186,56 +156,12 @@ void CAN_OPEN::tx_pdo_2(void)
 
     this->pdo_tx_2_send_msg = 0;
     tx_frame.extd = 0;
-    tx_frame.data_length_code = 8;
+    tx_frame.data_length_code = 4;
     tx_frame.identifier = this->pdo_tx_2_id;
     memcpy(tx_frame.data, this->out.abyTxData2, 8);
     ESP32Can.writeFrame(&tx_frame);
 
     memcpy(this->out_old.abyTxData2, this->out.abyTxData2, 8);
-  }
-}
-
-void CAN_OPEN::tx_pdo_3(void)
-{
-  CAN_OPEN_BASE::tx_pdo_3();
-
-  if (memcmp(this->out.abyTxData3, this->out_old.abyTxData3, 8) != 0)
-    this->pdo_tx_3_send_msg = 1;
-
-  if ((this->node_guard_state == NODE_GUARD_STATE_OPERATIONAL) && (this->pdo_tx_3_send_msg == 1))
-  {
-    twai_message_t tx_frame;
-
-    this->pdo_tx_3_send_msg = 0;
-    tx_frame.extd = 0;
-    tx_frame.data_length_code = 8;
-    tx_frame.identifier = this->pdo_tx_3_id;
-    memcpy(tx_frame.data, this->out.abyTxData3, 8);
-    ESP32Can.writeFrame(&tx_frame);
-
-    memcpy(this->out_old.abyTxData3, this->out.abyTxData3, 8);
-  }
-}
-
-void CAN_OPEN::tx_pdo_4(void)
-{
-  CAN_OPEN_BASE::tx_pdo_4();
-
-  if (memcmp(this->out.abyTxData4, this->out_old.abyTxData4, 8) != 0)
-    this->pdo_tx_4_send_msg = 1;
-
-  if ((this->node_guard_state == NODE_GUARD_STATE_OPERATIONAL) && (this->pdo_tx_4_send_msg == 1))
-  {
-    twai_message_t tx_frame;
-
-    this->pdo_tx_4_send_msg = 0;
-    tx_frame.extd = 0;
-    tx_frame.data_length_code = 8;
-    tx_frame.identifier = this->pdo_tx_4_id;
-    memcpy(tx_frame.data, this->out.abyTxData4, 8);
-    ESP32Can.writeFrame(&tx_frame);
-
-    memcpy(this->out_old.abyTxData4, this->out.abyTxData4, 8);
   }
 }
 

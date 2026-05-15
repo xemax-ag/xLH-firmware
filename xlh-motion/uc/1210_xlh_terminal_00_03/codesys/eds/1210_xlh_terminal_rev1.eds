@@ -7,11 +7,11 @@ FileVersion=1
 FileRevision=0
 EDSVersion=4.0
 Description=xlh_terminal
-CreationTime=07:28AM
-CreationDate=05-10-2026
+CreationTime=07:24AM
+CreationDate=05-15-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=07:28AM
-ModificationDate=05-10-2026
+ModificationTime=07:24AM
+ModificationDate=05-15-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
@@ -35,8 +35,8 @@ LSS_Supported=0
 Granularity=0
 SimpleBootUpSlave=0
 SimpleBootUpMaster=0
-NrOfRXPDO=4
-NrOfTXPDO=4
+NrOfRXPDO=1
+NrOfTXPDO=2
 
 [DummyUsage]
 Dummy0001=0
@@ -54,7 +54,7 @@ SupportedObjects=3
 3=0x1018
 
 [OptionalObjects]
-SupportedObjects=23
+SupportedObjects=13
 1=0x1003
 2=0x1005
 3=0x1006
@@ -63,32 +63,17 @@ SupportedObjects=23
 6=0x1016
 7=0x1200
 8=0x1400
-9=0x1401
-10=0x1402
-11=0x1403
-12=0x1600
-13=0x1601
-14=0x1602
-15=0x1603
-16=0x1800
-17=0x1801
-18=0x1802
-19=0x1803
-20=0x1A00
-21=0x1A01
-22=0x1A02
-23=0x1A03
+9=0x1600
+10=0x1800
+11=0x1801
+12=0x1A00
+13=0x1A01
 
 [ManufacturerObjects]
-SupportedObjects=8
+SupportedObjects=3
 1=0x3000
-2=0x3001
-3=0x3002
-4=0x3003
-5=0x3800
-6=0x3801
-7=0x3802
-8=0x3803
+2=0x3800
+3=0x3801
 
 [1000]
 ParameterName=Device Type
@@ -298,111 +283,6 @@ PDOMapping=0
 LowLimit=0x00
 HighLimit=0xFF
 
-[1401]
-SubNumber=3
-ParameterName=RPDO communication parameter
-ObjectType=0x09
-
-[1401sub0]
-ParameterName=Highest sub-index supported
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x2
-PDOMapping=0
-LowLimit=0x02
-HighLimit=0x05
-
-[1401sub1]
-ParameterName=COB-ID used by RPDO
-ObjectType=0x07
-DataType=0x0007
-AccessType=rw
-DefaultValue=$NODEID+0x300
-PDOMapping=0
-LowLimit=0x00000080
-HighLimit=0xFFFFFFFF
-
-[1401sub2]
-ParameterName=Transmission type
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0xFF
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1402]
-SubNumber=3
-ParameterName=RPDO communication parameter
-ObjectType=0x09
-
-[1402sub0]
-ParameterName=Highest sub-index supported
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x2
-PDOMapping=0
-LowLimit=0x02
-HighLimit=0x05
-
-[1402sub1]
-ParameterName=COB-ID used by RPDO
-ObjectType=0x07
-DataType=0x0007
-AccessType=rw
-DefaultValue=$NODEID+0x400
-PDOMapping=0
-LowLimit=0x00000080
-HighLimit=0xFFFFFFFF
-
-[1402sub2]
-ParameterName=Transmission type
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0xFF
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1403]
-SubNumber=3
-ParameterName=RPDO communication parameter
-ObjectType=0x09
-
-[1403sub0]
-ParameterName=Highest sub-index supported
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x2
-PDOMapping=0
-LowLimit=0x02
-HighLimit=0x05
-
-[1403sub1]
-ParameterName=COB-ID used by RPDO
-ObjectType=0x07
-DataType=0x0007
-AccessType=rw
-DefaultValue=$NODEID+0x500
-PDOMapping=0
-LowLimit=0x00000080
-HighLimit=0xFFFFFFFF
-
-[1403sub2]
-ParameterName=Transmission type
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0xFF
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
 [1600]
 SubNumber=9
 ParameterName=RPDO mapping parameter
@@ -494,291 +374,6 @@ ObjectType=0x07
 DataType=0x0007
 AccessType=const
 DefaultValue=0x30000808
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601]
-SubNumber=9
-ParameterName=RPDO mapping parameter
-ObjectType=0x09
-
-[1601sub0]
-ParameterName=Number of mapped application objects in PDO
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x08
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1601sub1]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010108
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub2]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010208
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub3]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1601sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30010808
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602]
-SubNumber=9
-ParameterName=RPDO mapping parameter
-ObjectType=0x09
-
-[1602sub0]
-ParameterName=Number of mapped application objects in PDO
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x08
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1602sub1]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020108
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub2]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020208
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub3]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1602sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30020808
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603]
-SubNumber=9
-ParameterName=RPDO mapping parameter
-ObjectType=0x09
-
-[1603sub0]
-ParameterName=Number of mapped application objects in PDO
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x08
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1603sub1]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030108
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub2]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030208
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub3]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1603sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30030808
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -901,126 +496,8 @@ AccessType=rw
 DefaultValue=0x0
 PDOMapping=0
 
-[1802]
-SubNumber=6
-ParameterName=TPDO communication parameter
-ObjectType=0x09
-
-[1802sub0]
-ParameterName=Highest sub-index supported
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x5
-PDOMapping=0
-LowLimit=0x02
-HighLimit=0x06
-
-[1802sub1]
-ParameterName=COB-ID used by TPDO
-ObjectType=0x07
-DataType=0x0007
-AccessType=rw
-DefaultValue=$NODEID+0x380
-PDOMapping=0
-LowLimit=0x00000080
-HighLimit=0xFFFFFFFF
-
-[1802sub2]
-ParameterName=Transmission type
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0xFF
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1802sub3]
-ParameterName=Inhibit time
-ObjectType=0x07
-DataType=0x0006
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
-[1802sub4]
-ParameterName=compatibility entry
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
-[1802sub5]
-ParameterName=Event timer
-ObjectType=0x07
-DataType=0x0006
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
-[1803]
-SubNumber=6
-ParameterName=TPDO communication parameter
-ObjectType=0x09
-
-[1803sub0]
-ParameterName=Highest sub-index supported
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x5
-PDOMapping=0
-LowLimit=0x02
-HighLimit=0x06
-
-[1803sub1]
-ParameterName=COB-ID used by TPDO
-ObjectType=0x07
-DataType=0x0007
-AccessType=rw
-DefaultValue=$NODEID+0x480
-PDOMapping=0
-LowLimit=0x00000080
-HighLimit=0xFFFFFFFF
-
-[1803sub2]
-ParameterName=Transmission type
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0xFF
-PDOMapping=0
-LowLimit=0x00
-HighLimit=0xFF
-
-[1803sub3]
-ParameterName=Inhibit time
-ObjectType=0x07
-DataType=0x0006
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
-[1803sub4]
-ParameterName=compatibility entry
-ObjectType=0x07
-DataType=0x0005
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
-[1803sub5]
-ParameterName=Event timer
-ObjectType=0x07
-DataType=0x0006
-AccessType=rw
-DefaultValue=0x0
-PDOMapping=0
-
 [1A00]
-SubNumber=9
+SubNumber=6
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -1029,7 +506,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x08
+DefaultValue=0x05
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -1059,7 +536,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38000308
+DefaultValue=0x38000310
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -1069,7 +546,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38000408
+DefaultValue=0x38000410
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -1079,43 +556,13 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38000508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A00sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38000608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A00sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38000708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A00sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38000808
+DefaultValue=0x38000510
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
 
 [1A01]
-SubNumber=9
+SubNumber=4
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -1124,7 +571,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x08
+DefaultValue=0x03
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -1154,247 +601,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38010308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A01sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38010408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A01sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38010508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A01sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38010608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A01sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38010708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A01sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38010808
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02]
-SubNumber=9
-ParameterName=TPDO mapping parameter
-ObjectType=0x09
-
-[1A02sub0]
-ParameterName=Number of mapped application objects in TPDO
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x08
-PDOMapping=0
-LowLimit=0
-HighLimit=8
-
-[1A02sub1]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020108
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub2]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020208
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub3]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A02sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38020808
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03]
-SubNumber=9
-ParameterName=TPDO mapping parameter
-ObjectType=0x09
-
-[1A03sub0]
-ParameterName=Number of mapped application objects in TPDO
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x08
-PDOMapping=0
-LowLimit=0
-HighLimit=8
-
-[1A03sub1]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030108
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub2]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030208
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub3]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030308
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030408
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030508
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A03sub8]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38030808
+DefaultValue=0x38010310
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -1413,271 +620,64 @@ DefaultValue=0x8
 PDOMapping=0
 
 [3000sub1]
-ParameterName=Data out 1 Byte 0
+ParameterName=RGB 1
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub2]
-ParameterName=Data out 1 Byte 1
+ParameterName=RGB 2
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub3]
-ParameterName=Data out 1 Byte 2
+ParameterName=RGB 3
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub4]
-ParameterName=Data out 1 Byte 3
+ParameterName=RGB 4
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub5]
-ParameterName=Data out 1 Byte 4
+ParameterName=RGB 5
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub6]
-ParameterName=Data out 1 Byte 5
+ParameterName=RGB 6
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub7]
-ParameterName=Data out 1 Byte 6
+ParameterName=RGB 7
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3000sub8]
-ParameterName=Data out 1 Byte 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001]
-SubNumber=9
-ParameterName=Data out 2
-ObjectType=0x08
-
-[3001sub0]
-ParameterName=Number of Entries
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x8
-PDOMapping=0
-
-[3001sub1]
-ParameterName=Data out 2 Byte 0
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub2]
-ParameterName=Data out 2 Byte 1
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub3]
-ParameterName=Data out 2 Byte 2
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub4]
-ParameterName=Data out 2 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub5]
-ParameterName=Data out 2 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub6]
-ParameterName=Data out 2 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub7]
-ParameterName=Data out 2 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3001sub8]
-ParameterName=Data out 2 Byte 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002]
-SubNumber=9
-ParameterName=Data out 3
-ObjectType=0x08
-
-[3002sub0]
-ParameterName=Number of Entries
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x8
-PDOMapping=0
-
-[3002sub1]
-ParameterName=Data out 3 Byte 0
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub2]
-ParameterName=Data out 3 Byte 1
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub3]
-ParameterName=Data out 3 Byte 2
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub4]
-ParameterName=Data out 3 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub5]
-ParameterName=Data out 3 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub6]
-ParameterName=Data out 3 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub7]
-ParameterName=Data out 3 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3002sub8]
-ParameterName=Data out 3 Byte 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003]
-SubNumber=9
-ParameterName=Data out 4
-ObjectType=0x08
-
-[3003sub0]
-ParameterName=Number of Entries
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x8
-PDOMapping=0
-
-[3003sub1]
-ParameterName=Data out 4 Byte 0
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub2]
-ParameterName=Data out 4 Byte 1
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub3]
-ParameterName=Data out 4 Byte 2
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub4]
-ParameterName=Data out 4 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub5]
-ParameterName=Data out 4 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub6]
-ParameterName=Data out 4 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub7]
-ParameterName=Data out 4 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3003sub8]
-ParameterName=Data out 4 Byte 7
+ParameterName=Brightness
 ObjectType=0x07
 DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
 [3800]
-SubNumber=9
-ParameterName=Digital in 1
+SubNumber=6
+ParameterName=Data in 1
 ObjectType=0x08
 
 [3800sub0]
@@ -1685,68 +685,47 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x8
+DefaultValue=0x5
 PDOMapping=0
 
 [3800sub1]
-ParameterName=Data in 1 Byte 0
+ParameterName=Keys 1-8
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3800sub2]
-ParameterName=Data in 1 Byte 1
+ParameterName=Keys 9-12
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3800sub3]
-ParameterName=Data in 1 Byte 2
+ParameterName=Encoder C
 ObjectType=0x07
-DataType=0x0005
+DataType=0x0003
 AccessType=ro
 PDOMapping=1
 
 [3800sub4]
-ParameterName=Data in 1 Byte 3
+ParameterName=Encoder XY
 ObjectType=0x07
-DataType=0x0005
+DataType=0x0003
 AccessType=ro
 PDOMapping=1
 
 [3800sub5]
-ParameterName=Data in 1 Byte 4
+ParameterName=Encoder Z
 ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3800sub6]
-ParameterName=Data in 1 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3800sub7]
-ParameterName=Data in 1 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3800sub8]
-ParameterName=Data in 1 Byte 7
-ObjectType=0x07
-DataType=0x0005
+DataType=0x0003
 AccessType=ro
 PDOMapping=1
 
 [3801]
-SubNumber=9
-ParameterName=Digital in 2
+SubNumber=4
+ParameterName=Data in 2
 ObjectType=0x08
 
 [3801sub0]
@@ -1754,200 +733,27 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x8
+DefaultValue=0x3
 PDOMapping=0
 
 [3801sub1]
-ParameterName=Data in 2 Byte 0
+ParameterName=Keys 13-20
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3801sub2]
-ParameterName=Data in 2 Byte 1
+ParameterName=Keys 21-24
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3801sub3]
-ParameterName=Data in 2 Byte 2
+ParameterName=Velocity Master
 ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub4]
-ParameterName=Data in 2 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub5]
-ParameterName=Data in 2 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub6]
-ParameterName=Data in 2 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub7]
-ParameterName=Data in 2 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub8]
-ParameterName=Data in 2 Byte 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802]
-SubNumber=9
-ParameterName=Digital in 3
-ObjectType=0x08
-
-[3802sub0]
-ParameterName=Number of Entries
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x8
-PDOMapping=0
-
-[3802sub1]
-ParameterName=Data in 3 Byte 0
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub2]
-ParameterName=Data in 3 Byte 1
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub3]
-ParameterName=Data in 3 Byte 2
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub4]
-ParameterName=Data in 3 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub5]
-ParameterName=Data in 3 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub6]
-ParameterName=Data in 3 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub7]
-ParameterName=Data in 3 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3802sub8]
-ParameterName=Data in 3 Byte 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803]
-SubNumber=9
-ParameterName=Digital in 4
-ObjectType=0x08
-
-[3803sub0]
-ParameterName=Number of Entries
-ObjectType=0x07
-DataType=0x0005
-AccessType=const
-DefaultValue=0x8
-PDOMapping=0
-
-[3803sub1]
-ParameterName=Data in 4 Byte 0
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub2]
-ParameterName=Data in 4 Byte 1
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub3]
-ParameterName=Data in 4 Byte 2
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub4]
-ParameterName=Data in 4 Byte 3
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub5]
-ParameterName=Data in 4 Byte 4
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub6]
-ParameterName=Data in 4 Byte 5
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub7]
-ParameterName=Data in 4 Byte 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3803sub8]
-ParameterName=Data in 4 Byte 7
-ObjectType=0x07
-DataType=0x0005
+DataType=0x0003
 AccessType=ro
 PDOMapping=1
 

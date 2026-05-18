@@ -5,6 +5,7 @@ module RC_SERVO (
 	output reg OUT);
 	//
 	parameter CTR_LIMIT = 16'd20000;
+	parameter OFFSET = 16'd550;
 	//
 	reg [15:0] ctr;
 	reg [15:0] value_temp;
@@ -33,10 +34,10 @@ module RC_SERVO (
 	//
 	if (ctr >= (CTR_LIMIT - 1))
 		ctr <= 0;
-		value_temp <= VALUE * 8 + 550;
+		value_temp <= VALUE * 8 + OFFSET;
 	//
 	//if ((ctr < value_temp) || (value_temp == CTR_LIMIT) || (VALUE == 16'hFF))
-	if ((ctr < value_temp) || (value_temp == CTR_LIMIT))
+	if (((ctr < value_temp) || (value_temp == CTR_LIMIT)) && (value_temp > OFFSET))
 		OUT <= 1;
 	else
 		OUT <= 0;

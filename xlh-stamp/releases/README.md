@@ -15,7 +15,7 @@
 ### 1004_xlh_stamp_potentiometer_8_00_01_rev1.bin
 - Initial release with basic functionality
 
----
+--- fp
 ## xLH-stamp-adc-dac
 ### 1005_xlh_stamp_adc_dac_00_01_rev1.bin
 - Initial release with basic functionality

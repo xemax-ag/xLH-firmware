@@ -155,7 +155,7 @@ set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_03
 set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_04
 set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_05
 set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_06
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_07
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to IO_07
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_08
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_09
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IO_10

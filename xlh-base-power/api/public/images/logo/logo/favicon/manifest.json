@@ -1,5 +1,10 @@
 {
-  "name": "App",
+  "name": "Strategiekonzept",
+  "short_name": "Strategiekonzept",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/images/logo/favicon/android-icon-36x36.png",
@@ -36,6 +41,11 @@
       "sizes": "192x192",
       "type": "image/png",
       "density": "4.0"
+    },
+    {
+      "src": "/images/logo/favicon/android-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

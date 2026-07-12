@@ -79,8 +79,12 @@ typedef struct
 #define OBJ_DICT_VENDOR_ID 0x1018
 #define OBJ_DICT_PDO_RX_1_COM_PARS 0x1400
 #define OBJ_DICT_PDO_RX_2_COM_PARS 0x1401
+#define OBJ_DICT_PDO_RX_3_COM_PARS 0x1401
+#define OBJ_DICT_PDO_RX_4_COM_PARS 0x1401
 #define OBJ_DICT_PDO_TX_1_COM_PARS 0x1800
 #define OBJ_DICT_PDO_TX_2_COM_PARS 0x1801
+#define OBJ_DICT_PDO_TX_3_COM_PARS 0x1802
+#define OBJ_DICT_PDO_TX_4_COM_PARS 0x1803
 #define OBJ_DICT_STATUS_INFORMATION 0x5800
 
 class CAN_OPEN_BASE
@@ -102,36 +106,40 @@ public:
   u_int16_t pdo_tx_4_id;
 
   CAN_OPEN_BASE(void);
-  virtual void setup(void);
+  // No virtual methods: the CAN ISR call path dispatches statically (CAN_OPEN
+  // shadows the relevant methods by name). Avoids any vtable load from flash
+  // when the ISR fires with the cache disabled.
+  void setup(void);
   void ids(void);
-  virtual void bootup(void);
-  virtual void nmt(twai_message_t *msg_rx);
-  virtual void node_guard(twai_message_t *msg_rx);
-  virtual void sdo_rx(twai_message_t *msg_rx);
-  virtual void sync(void);
-  virtual void rx_pdo_1(twai_message_t *msg_rx);
-  virtual void rx_pdo_2(twai_message_t *msg_rx);
-  virtual void rx_pdo_3(twai_message_t *msg_rx);
-  virtual void rx_pdo_4(twai_message_t *msg_rx);
-  virtual void tx_pdo_1(void);
-  virtual void tx_pdo_2(void);
-  virtual void tx_pdo_3(void);
-  virtual void tx_pdo_4(void);
+  void bootup(void);
+  void nmt(twai_message_t *msg_rx);
+  void node_guard(twai_message_t *msg_rx);
+  void sdo_rx(twai_message_t *msg_rx);
+  void sync(void);
+  void rx_pdo_1(twai_message_t *msg_rx);
+  void rx_pdo_2(twai_message_t *msg_rx);
+  void rx_pdo_3(twai_message_t *msg_rx);
+  void rx_pdo_4(twai_message_t *msg_rx);
+  void tx_pdo_1(void);
+  void tx_pdo_2(void);
+  void tx_pdo_3(void);
+  void tx_pdo_4(void);
   void ms_counter(uint32_t value);
-  virtual void loop(void);
-  virtual void cyclic_isr_tx(void);
-  virtual void cyclic_isr_rx(void);  
-  virtual void reset_output(void);  
+  void loop(void);
+  void reset_output(void);
   s_obj_dict_base obj_dict_base;
   uint8_t node_guard_state;
   uint8_t pdo_tx_1_send_msg;
   uint8_t pdo_tx_2_send_msg;
   uint8_t pdo_tx_3_send_msg;
   uint8_t pdo_tx_4_send_msg;
-  
-private:
+
+protected:
+  // Callable from the derived class's cyclic_isr_tx implementation.
   void node_guard_timeout(void);
-  uint8_t node_guard_toggle; 
+
+private:
+  uint8_t node_guard_toggle;
   uint32_t node_guard_ms_counter;
   uint32_t pdo_tx_1_ms_counter;
   uint32_t pdo_tx_2_ms_counter;

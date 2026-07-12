@@ -33,6 +33,8 @@ public:
   void tx_pdo_1(void);
   void tx_pdo_2(void);
   void reset_output(void);
+  void cyclic_isr_rx(void);
+  void cyclic_isr_tx(void);
   void loop(void);
   s_in in;
   s_out out;

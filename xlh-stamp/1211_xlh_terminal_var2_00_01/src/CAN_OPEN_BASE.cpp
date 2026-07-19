@@ -8,13 +8,14 @@ ToDo:
 #include <stdint.h>
 #include <Arduino.h>
 #include <ESP32-TWAI-CAN.hpp>
-#include "CONFIG.h"
 #include "CAN_OPEN_BASE.h"
 
 #define CAN_RX_PIN GPIO_NUM_8
 #define CAN_TX_PIN GPIO_NUM_7
 
-CAN_OPEN_BASE::CAN_OPEN_BASE(void) { ; }
+CAN_OPEN_BASE::CAN_OPEN_BASE(void)
+{
+}
 
 void CAN_OPEN_BASE::setup(void)
 {
@@ -25,7 +26,7 @@ void CAN_OPEN_BASE::setup(void)
   this->node_guard_state = NODE_GUARD_STATE_STOPPED;
 
   // Optimierung: CanId Filter
-  ESP32Can.begin(ESP32Can.convertSpeed(1000), CAN_TX_PIN, CAN_RX_PIN, 32, 64);
+  ESP32Can.begin(ESP32Can.convertSpeed(1000), CAN_TX_PIN, CAN_RX_PIN, 10, 32);
 }
 
 void CAN_OPEN_BASE::ids(void)
@@ -269,24 +270,6 @@ void CAN_OPEN_BASE::sdo_rx(twai_message_t *msg_rx)
         this->obj_dict_base.pdo_tx_1_event_time = uint32_t(co_data_16bit.uiValue);
       }
       break;
-    case OBJ_DICT_PDO_TX_2_COM_PARS:
-      if (sub_index == 0x05)
-      {
-        this->obj_dict_base.pdo_tx_2_event_time = uint32_t(co_data_16bit.uiValue);
-      }
-      break;
-    case OBJ_DICT_PDO_TX_3_COM_PARS:
-      if (sub_index == 0x05)
-      {
-        this->obj_dict_base.pdo_tx_3_event_time = uint32_t(co_data_16bit.uiValue);
-      }
-      break;
-    case OBJ_DICT_PDO_TX_4_COM_PARS:
-      if (sub_index == 0x05)
-      {
-        this->obj_dict_base.pdo_tx_4_event_time = uint32_t(co_data_16bit.uiValue);
-      }
-      break;
     }
     msg_tx.extd = 0;
     msg_tx.data_length_code = 8;
@@ -353,6 +336,7 @@ void CAN_OPEN_BASE::rx_pdo_1(twai_message_t *msg_rx)
 {
   // this->pdo_rx_1_ms_counter = 0;
 }
+
 void CAN_OPEN_BASE::rx_pdo_2(twai_message_t *msg_rx) { ; }
 void CAN_OPEN_BASE::rx_pdo_3(twai_message_t *msg_rx) { ; }
 void CAN_OPEN_BASE::rx_pdo_4(twai_message_t *msg_rx) { ; }
@@ -379,26 +363,8 @@ void CAN_OPEN_BASE::tx_pdo_2(void)
   }
 }
 
-void CAN_OPEN_BASE::tx_pdo_3(void)
-{
-  // this->pdo_tx_3_send_msg = 0;
-  if ((this->obj_dict_base.pdo_tx_3_event_time > 0) &&
-      (this->pdo_tx_3_ms_counter >= this->obj_dict_base.pdo_tx_3_event_time))
-  {
-    this->pdo_tx_3_send_msg = 1;
-    this->pdo_tx_3_ms_counter = 0;
-  }
-}
-void CAN_OPEN_BASE::tx_pdo_4(void)
-{
-  // this->pdo_tx_4_send_msg = 0;
-  if ((this->obj_dict_base.pdo_tx_4_event_time > 0) &&
-      (this->pdo_tx_4_ms_counter >= this->obj_dict_base.pdo_tx_4_event_time))
-  {
-    this->pdo_tx_4_send_msg = 1;
-    this->pdo_tx_4_ms_counter = 0;
-  }
-}
+void CAN_OPEN_BASE::tx_pdo_3(void) { ; }
+void CAN_OPEN_BASE::tx_pdo_4(void) { ; }
 
 void CAN_OPEN_BASE::ms_counter(uint32_t value)
 {
@@ -416,7 +382,7 @@ void CAN_OPEN_BASE::cyclic_isr_rx(void)
   twai_message_t msg_rx;
   uint16_t n;
 
-  for (int n = 0; n < 64; n++)
+  for (int n = 0; n < 32; n++)
   {
     if (ESP32Can.readFrame(&msg_rx, 0))
     {
@@ -445,7 +411,7 @@ void CAN_OPEN_BASE::cyclic_isr_rx(void)
 
 void CAN_OPEN_BASE::cyclic_isr_tx(void)
 {
-  this->ms_counter(ISR_TIMER_0_TIME_US/1000);
+  this->ms_counter(5);
   this->node_guard_timeout();
   this->tx_pdo_1();
   this->tx_pdo_2();

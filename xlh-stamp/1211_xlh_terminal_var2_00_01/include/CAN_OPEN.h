@@ -30,16 +30,9 @@ public:
   // These shadow the same-named CAN_OPEN_BASE methods. The CAN ISR calls
   // them on a CAN_OPEN instance directly, so dispatch is static (no vtable).
   void rx_pdo_1(twai_message_t *msg_rx);
-  void rx_pdo_2(twai_message_t *msg_rx);
-  void rx_pdo_3(twai_message_t *msg_rx);
-  void rx_pdo_4(twai_message_t *msg_rx);
   void tx_pdo_1(void);
   void tx_pdo_2(void);
-  void tx_pdo_3(void);
-  void tx_pdo_4(void);
   void reset_output(void);
-  void cyclic_isr_rx(void);
-  void cyclic_isr_tx(void);
   void loop(void);
   s_in in;
   s_out out;

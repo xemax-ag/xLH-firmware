@@ -1,7 +1,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define VERSION "0.01 | REV1"
+#define VERSION "0.03 | REV1"
 
 #define GPIO_TOUCH_BTN GPIO_NUM_41
 #define HSPI_MISO G6

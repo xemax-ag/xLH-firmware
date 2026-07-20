@@ -31,7 +31,6 @@ public:
   // them on a CAN_OPEN instance directly, so dispatch is static (no vtable).
   void rx_pdo_1(twai_message_t *msg_rx);
   void tx_pdo_1(void);
-  void tx_pdo_2(void);
   void reset_output(void);
   void loop(void);
   s_in in;

@@ -121,40 +121,17 @@ void CHAIN2::cyclic(void)
                 }
             }
         }
-        // NOTE: chain2 deliberately skips keyButtonStatus[5] in value8Bit[0]
-        // and packs 4 bits (ks[9..12]) into value8Bit[1] — wire format must not change.
         uint8_t value8Bit0 = 0;
-        value8Bit0 += this->out.keyButtonStatus[8];
-        value8Bit0 = value8Bit0 << 1;
-        value8Bit0 += this->out.keyButtonStatus[7];
-        value8Bit0 = value8Bit0 << 1;
-        value8Bit0 += this->out.keyButtonStatus[6];
-        value8Bit0 = value8Bit0 << 1;
-        value8Bit0 += this->out.keyButtonStatus[4];
-        value8Bit0 = value8Bit0 << 1;
-        value8Bit0 += this->out.keyButtonStatus[3];
-        value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[2];
         value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[1];
         value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[0];
 
-        uint8_t value8Bit1 = 0;
-        value8Bit1 += this->out.keyButtonStatus[12];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[11];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[10];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[9];
-
         // Publish the TX fields atomically so the CAN ISR on another core sees
         // a consistent set of value8Bit/value16Bit, not a half-updated mix.
         portENTER_CRITICAL(&chain2Mux);
         this->out.value8Bit[0] = value8Bit0;
-        this->out.value8Bit[1] = value8Bit1;
-        this->out.value16Bit[0] = this->out.angleValue[5];
         portEXIT_CRITICAL(&chain2Mux);
     }
 }

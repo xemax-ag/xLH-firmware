@@ -2,23 +2,23 @@
 Lines=0
 
 [FileInfo]
-FileName=1210_xlh_terminal_var1_rev1.eds
+FileName=1211_xlh_terminal_var2_rev1.eds
 FileVersion=1
 FileRevision=0
 EDSVersion=4.0
-Description=xlh_terminal_var1
-CreationTime=08:36AM
-CreationDate=07-19-2026
+Description=xlh_terminal_var2
+CreationTime=08:45AM
+CreationDate=07-20-2026
 CreatedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
-ModificationTime=08:36AM
-ModificationDate=07-19-2026
+ModificationTime=08:45AM
+ModificationDate=07-20-2026
 ModifiedBy=CODESYS V3.X, DeviceEditorCANbusDevice.plugin, V4.3.0.0
 
 [DeviceInfo]
 VendorName=xemax ag
 VendorNumber=0x0321
-ProductName=xlh_terminal_var1
-ProductNumber=0x04BA
+ProductName=xlh_terminal_var2
+ProductNumber=0x04BB
 RevisionNumber=0x0001
 OrderCode=0
 BaudRate_10=1
@@ -206,7 +206,7 @@ ParameterName=Product Code
 ObjectType=0x07
 DataType=0x0007
 AccessType=ro
-DefaultValue=1210
+DefaultValue=1211
 PDOMapping=0
 
 [1018sub3]
@@ -284,7 +284,7 @@ LowLimit=0x00
 HighLimit=0xFF
 
 [1600]
-SubNumber=9
+SubNumber=7
 ParameterName=RPDO mapping parameter
 ObjectType=0x09
 
@@ -293,7 +293,7 @@ ParameterName=Number of mapped application objects in PDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x08
+DefaultValue=0x06
 PDOMapping=0
 LowLimit=0x00
 HighLimit=0xFF
@@ -349,26 +349,6 @@ LowLimit=0x0
 HighLimit=0xFFFFFFFF
 
 [1600sub6]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30000608
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1600sub7]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x30000708
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1600sub8]
 ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
@@ -497,7 +477,7 @@ DefaultValue=0x0
 PDOMapping=0
 
 [1A00]
-SubNumber=6
+SubNumber=4
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -506,7 +486,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x05
+DefaultValue=0x03
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -536,33 +516,13 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38000310
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A00sub4]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38000410
-PDOMapping=0
-LowLimit=0x0
-HighLimit=0xFFFFFFFF
-
-[1A00sub5]
-ParameterName=Mapping Entry
-ObjectType=0x07
-DataType=0x0007
-AccessType=const
-DefaultValue=0x38000510
+DefaultValue=0x38000308
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
 
 [1A01]
-SubNumber=4
+SubNumber=5
 ParameterName=TPDO mapping parameter
 ObjectType=0x09
 
@@ -571,7 +531,7 @@ ParameterName=Number of mapped application objects in TPDO
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x03
+DefaultValue=0x04
 PDOMapping=0
 LowLimit=0
 HighLimit=8
@@ -581,7 +541,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38010108
+DefaultValue=0x38010310
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -591,7 +551,7 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38010208
+DefaultValue=0x38010410
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
@@ -601,13 +561,23 @@ ParameterName=Mapping Entry
 ObjectType=0x07
 DataType=0x0007
 AccessType=const
-DefaultValue=0x38010310
+DefaultValue=0x38010510
+PDOMapping=0
+LowLimit=0x0
+HighLimit=0xFFFFFFFF
+
+[1A01sub4]
+ParameterName=Mapping Entry
+ObjectType=0x07
+DataType=0x0007
+AccessType=const
+DefaultValue=0x38010610
 PDOMapping=0
 LowLimit=0x0
 HighLimit=0xFFFFFFFF
 
 [3000]
-SubNumber=9
+SubNumber=7
 ParameterName=Data out 1
 ObjectType=0x08
 
@@ -616,7 +586,7 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x8
+DefaultValue=0x6
 PDOMapping=0
 
 [3000sub1]
@@ -654,20 +624,6 @@ DataType=0x0005
 AccessType=rww
 PDOMapping=1
 
-[3000sub6]
-ParameterName=RGB 6
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
-[3000sub7]
-ParameterName=RGB 7
-ObjectType=0x07
-DataType=0x0005
-AccessType=rww
-PDOMapping=1
-
 [3000sub8]
 ParameterName=Brightness
 ObjectType=0x07
@@ -676,7 +632,7 @@ AccessType=rww
 PDOMapping=1
 
 [3800]
-SubNumber=6
+SubNumber=4
 ParameterName=Data in 1
 ObjectType=0x08
 
@@ -685,46 +641,32 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x5
+DefaultValue=0x3
 PDOMapping=0
 
 [3800sub1]
-ParameterName=Keys 1-8
+ParameterName=Keys 1
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3800sub2]
-ParameterName=Keys 9-12
+ParameterName=Keys 2
 ObjectType=0x07
 DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3800sub3]
-ParameterName=Encoder C
+ParameterName=Keys 3
 ObjectType=0x07
-DataType=0x0003
-AccessType=ro
-PDOMapping=1
-
-[3800sub4]
-ParameterName=Encoder XY
-ObjectType=0x07
-DataType=0x0003
-AccessType=ro
-PDOMapping=1
-
-[3800sub5]
-ParameterName=Encoder Z
-ObjectType=0x07
-DataType=0x0003
+DataType=0x0005
 AccessType=ro
 PDOMapping=1
 
 [3801]
-SubNumber=4
+SubNumber=5
 ParameterName=Data in 2
 ObjectType=0x08
 
@@ -733,25 +675,32 @@ ParameterName=Number of Entries
 ObjectType=0x07
 DataType=0x0005
 AccessType=const
-DefaultValue=0x3
+DefaultValue=0x4
 PDOMapping=0
 
-[3801sub1]
-ParameterName=Keys 13-20
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
-[3801sub2]
-ParameterName=Keys 21-24
-ObjectType=0x07
-DataType=0x0005
-AccessType=ro
-PDOMapping=1
-
 [3801sub3]
-ParameterName=Velocity Master
+ParameterName=Velocity Auto
+ObjectType=0x07
+DataType=0x0003
+AccessType=ro
+PDOMapping=1
+
+[3801sub4]
+ParameterName=Velocity Ax XY
+ObjectType=0x07
+DataType=0x0003
+AccessType=ro
+PDOMapping=1
+
+[3801sub5]
+ParameterName=Velocity Ax Z
+ObjectType=0x07
+DataType=0x0003
+AccessType=ro
+PDOMapping=1
+
+[3801sub6]
+ParameterName=Velocity Ax C
 ObjectType=0x07
 DataType=0x0003
 AccessType=ro

@@ -46,10 +46,17 @@ void CHAIN1::init(void)
                     delay(25);
                     this->M5Chain.setRGBValue(this->devicesList->devices[i].id, 0, 1, chainColors[CHAIN_RGB_OFF], 3, &this->operationStatus);
                     delay(25);
-                    this->M5Chain.setRGBLight(this->devicesList->devices[i].id, 100, &this->operationStatus, CHAIN_SAVE_FLASH_DISABLE);
+                    this->M5Chain.setRGBLight(this->devicesList->devices[i].id, 20, &this->operationStatus, CHAIN_SAVE_FLASH_DISABLE);
                     delay(25);
                     this->M5Chain.setKeyButtonMode(this->devicesList->devices[i].id, CHAIN_BUTTON_NONE_REPORT_MODE, &this->operationStatus);
                     delay(25);
+                }
+
+                if (this->devicesList->devices[i].device_type == CHAIN_ANGLE_TYPE_CODE)
+                {
+                    this->M5Chain.setAngleRotationDirection(
+                        this->devicesList->devices[i].id, ANGLE_ROTATION_INCREASING, &this->operationStatus,
+                        CHAIN_SAVE_FLASH_DISABLE); // Angle rotation direction increasing, not save
                 }
             }
         }
@@ -70,9 +77,9 @@ void CHAIN1::cyclic(void)
         // Snapshot `in` once so the UART loop below works from a stable view —
         // the CAN ISR may write `in.rgbLed[]` / `in.rgbLedBrightness[]` on a different core.
         sChainIn inSnap;
-        portENTER_CRITICAL(&chain1Mux);
+        portENTER_CRITICAL(&chain2Mux);
         memcpy(&inSnap, &this->in, sizeof(inSnap));
-        portEXIT_CRITICAL(&chain1Mux);
+        portEXIT_CRITICAL(&chain2Mux);
 
         if (this->devicesList)
         {
@@ -92,7 +99,6 @@ void CHAIN1::cyclic(void)
                     }
                     this->inOld.rgbLed[i] = inSnap.rgbLed[i];
 
-
                     if ((this->devicesList->devices[i].device_type == CHAIN_KEY_TYPE_CODE) ||
                         (this->devicesList->devices[i].device_type == CHAIN_ENCODER_TYPE_CODE))
                     {
@@ -103,26 +109,19 @@ void CHAIN1::cyclic(void)
                             this->out.keyButtonStatus[i] = uint8_t(keyButtonStatus);
                         }
                     }
-                    if (this->devicesList->devices[i].device_type == CHAIN_ENCODER_TYPE_CODE)
+                    if (this->devicesList->devices[i].device_type == CHAIN_ANGLE_TYPE_CODE)
                     {
-                        int16_t incEncoder = 0;
-
-                        this->chainStatus = this->M5Chain.getEncoderIncValue(this->devicesList->devices[i].id, &incEncoder);
+                        uint16_t angle12Bit = 0;
+                        this->chainStatus = this->M5Chain.getAngle12BitAdc(this->devicesList->devices[i].id, &angle12Bit);
                         if (this->chainStatus == CHAIN_OK)
                         {
-                            this->out.encoderValue[i] = this->out.encoderValue[i] + incEncoder;
+                            this->out.angleValue[i] = int16_t(angle12Bit);
                         }
                     }
-
-
                 }
             }
         }
         uint8_t value8Bit0 = 0;
-        value8Bit0 += this->out.keyButtonStatus[7];
-        value8Bit0 = value8Bit0 << 1;
-        value8Bit0 += this->out.keyButtonStatus[6];
-        value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[5];
         value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[4];
@@ -135,23 +134,10 @@ void CHAIN1::cyclic(void)
         value8Bit0 = value8Bit0 << 1;
         value8Bit0 += this->out.keyButtonStatus[0];
 
-        uint8_t value8Bit1 = 0;
-        value8Bit1 += this->out.keyButtonStatus[11];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[10];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[9];
-        value8Bit1 = value8Bit1 << 1;
-        value8Bit1 += this->out.keyButtonStatus[8];
-
         // Publish the TX fields atomically so the CAN ISR on another core sees
         // a consistent set of value8Bit/value16Bit, not a half-updated mix.
         portENTER_CRITICAL(&chain1Mux);
         this->out.value8Bit[0] = value8Bit0;
-        this->out.value8Bit[1] = value8Bit1;
-        this->out.value16Bit[0] = this->out.encoderValue[2];
-        this->out.value16Bit[1] = this->out.encoderValue[3];
-        this->out.value16Bit[2] = this->out.encoderValue[4];
         portEXIT_CRITICAL(&chain1Mux);
     }
 }

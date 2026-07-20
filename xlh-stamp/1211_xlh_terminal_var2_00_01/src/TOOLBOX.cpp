@@ -25,8 +25,7 @@ void visu_loop(void)
     sprite.setFont(&fonts::FreeMonoBold9pt7b);
     sprite.setCursor(0, 5);
     sprite.printf("TERMINAL\r\n");
-
-    sprite.printf("\r\n");
+    sprite.printf("VAR3\r\n");
     sprite.printf("\r\n");
     sprite.printf("\r\n");
     sprite.printf("\r\n");
